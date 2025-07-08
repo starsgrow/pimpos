@@ -1,0 +1,67 @@
+{
+  "name": "PowerGym Chat Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "webhook/chat",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-chat",
+      "name": "Chat Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Procesar mensaje del chat para Pimpos Gym\nconst message = $input.first().json.message;\nconst timestamp = $input.first().json.timestamp;\nconst userAgent = $input.first().json.userAgent;\n\n// Lógica simple de respuesta para Pimpos Gym\nlet reply = '';\n\nif (message.toLowerCase().includes('precio') || message.toLowerCase().includes('costo') || message.toLowerCase().includes('cuanto')) {\n  reply = 'Nuestros precios son: Mensual $68,000, Mensual Estudiante $60,000, 10 entradas $55,000, 20 entradas $75,000, 30 entradas $95,000, sesión única $8,000. ¿Te interesa algún plan específico?';\n} else if (message.toLowerCase().includes('horario') || message.toLowerCase().includes('hora') || message.toLowerCase().includes('abierto')) {\n  reply = 'Estamos abiertos de lunes a viernes de 5:00 AM a 9:20 PM, sábados de 8:00 AM a 12:30 PM, domingos cerrado.';\n} else if (message.toLowerCase().includes('clase') || message.toLowerCase().includes('entrenamiento') || message.toLowerCase().includes('rumba') || message.toLowerCase().includes('functional')) {\n  reply = 'Ofrecemos clases grupales de lunes a jueves a las 7:30 PM: Lunes y Miércoles Rumba, Martes Functional, Jueves Ritmos Latinos.';\n} else if (message.toLowerCase().includes('ubicacion') || message.toLowerCase().includes('donde') || message.toLowerCase().includes('direccion')) {\n  reply = 'Estamos ubicados en el centro de la ciudad, cerca de ferreterías, químicos y la plaza del carnaval.';\n} else if (message.toLowerCase().includes('estacionamiento') || message.toLowerCase().includes('parking')) {\n  reply = 'Ofrecemos estacionamiento gratuito para motos y bicicletas.';\n} else if (message.toLowerCase().includes('ducha') || message.toLowerCase().includes('baño')) {\n  reply = 'Tenemos duchas con agua fría disponibles para nuestros miembros.';\n} else if (message.toLowerCase().includes('suplemento') || message.toLowerCase().includes('proteina')) {\n  reply = 'Vendemos batidos de proteína de 9:30 AM a 1:00 PM y de 3:00 PM a 5:30 PM.';\n} else if (message.toLowerCase().includes('estudiante') || message.toLowerCase().includes('carnet')) {\n  reply = 'Ofrecemos descuento especial para estudiantes con carnet válido: $60,000 mensual.';\n} else {\n  reply = 'Gracias por tu mensaje. Un instructor te contactará pronto para ayudarte con tu consulta.';\n}\n\nreturn {\n  reply: reply,\n  processedAt: new Date().toISOString(),\n  originalMessage: message\n};"
+      },
+      "id": "process-message",
+      "name": "Process Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "id": "respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 300]
+    }
+  ],
+  "connections": {
+    "Chat Webhook": {
+      "main": [
+        [
+          {
+            "node": "Process Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Message": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "versionId": "1"
+} 
