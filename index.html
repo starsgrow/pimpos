@@ -7,23 +7,25 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav">
             <div class="nav-logo">
-                <i class="fas fa-dumbbell"></i>
-                <span>Pimpos Gym</span>
+                <img src="images/logo.png" alt="Pimpos Gym Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+                <span style="display:none;">Pimpos Gym</span>
             </div>
             <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#clases">Clases</a></li>
-                <li><a href="#precios">Precios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#clases" class="nav-link">Clases</a></li>
+                <li><a href="#precios" class="nav-link">Precios</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
-            <div class="nav-toggle">
+            <div class="nav-toggle" id="navToggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -33,17 +35,40 @@
 
     <!-- Hero Section -->
     <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1>Entrena en el corazón de la ciudad con <span class="highlight">Pimpos Gym</span></h1>
-            <p>Gimnasio tradicional ubicado en el centro, cerca de ferreterías, químicos y la plaza del carnaval</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Únete Ahora</button>
-                <button class="btn btn-secondary">Ver Clases</button>
-            </div>
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
         </div>
-        <div class="hero-image">
-            <div class="hero-placeholder">
-                <i class="fas fa-dumbbell"></i>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Entrena en el corazón de San Juan de Pasto con <span class="highlight">Pimpos Gym</span></h1>
+                <p>Gimnasio tradicional ubicado en el centro, cerca de ferreterías, químicos y la plaza del carnaval. Más de 10 años transformando vidas.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">Usuarios Activos</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">10</span>
+                        <span class="stat-label">Años de Experiencia</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Clases Semanales</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('precios')">
+                        <i class="fas fa-dumbbell"></i>
+                        Únete Ahora
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('clases')">
+                        <i class="fas fa-play"></i>
+                        Ver Clases
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/logo.png" alt="Pimpos Gym Logo" style="max-width:480px;width:100%;display:block;margin:0 auto 32px auto;">
             </div>
         </div>
     </section>
@@ -51,27 +76,43 @@
     <!-- Servicios -->
     <section id="servicios" class="services">
         <div class="container">
-            <h2>Nuestros Servicios</h2>
+            <div class="section-header">
+                <h2>Nuestros Servicios</h2>
+                <p>Todo lo que necesitas para alcanzar tus objetivos fitness</p>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <i class="fas fa-clock"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
                     <h3>Horarios Extendidos</h3>
-                    <p>Abierto de lunes a viernes de 5:00 AM a 9:20 PM</p>
+                    <p>Abierto de lunes a viernes de 5:00 AM a 9:20 PM, sábados de 8:00 AM a 12:30 PM</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> 16+ horas diarias</span>
+                        <span><i class="fas fa-check"></i> Flexibilidad total</span>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-users"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <h3>Clases Grupales</h3>
-                    <p>Rumba, Functional y Ritmos Latinos de lunes a jueves</p>
+                    <p>Rumba, Functional y Ritmos Latinos de lunes a jueves a las 7:30 PM</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Instructores disponibles</span>
+                        <span><i class="fas fa-check"></i> 4 clases semanales</span>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-parking"></i>
+                    <div class="service-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
                     <h3>Estacionamiento Gratis</h3>
-                    <p>Estacionamiento gratuito para motos y bicicletas</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tint"></i>
-                    <h3>Duchas</h3>
-                    <p>Duchas con agua fría disponibles</p>
+                    <p>Estacionamiento gratuito para motos y bicicletas en nuestras instalaciones</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Espacio disponible</span>
+                        <span><i class="fas fa-check"></i> Sin costo adicional</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,31 +121,55 @@
     <!-- Clases -->
     <section id="clases" class="classes">
         <div class="container">
-            <h2>Nuestras Clases</h2>
+            <div class="section-header">
+                <h2>Nuestras Clases</h2>
+                <p>Variedad de clases para todos los niveles y gustos</p>
+            </div>
             <div class="classes-grid">
-                <div class="class-card">
+                <div class="class-card featured">
                     <div class="class-image">
-                        <i class="fas fa-music"></i>
+                        <div class="class-overlay">
+                            <div class="class-level">Todos los niveles</div>
+                        </div>
                     </div>
-                    <h3>Rumba</h3>
-                    <p>Baila y diviértete con ritmos latinos</p>
-                    <span class="class-time">Lunes y Miércoles - 7:30 PM</span>
+                    <div class="class-content">
+                        <h3>Rumba</h3>
+                        <p>Clase de baile energética con música latina</p>
+                        <div class="class-details">
+                            <span class="class-time"><i class="fas fa-clock"></i> 7:30 PM</span>
+                            <span class="class-duration"><i class="fas fa-stopwatch"></i> 60 min</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div class="class-image">
-                        <i class="fas fa-fire"></i>
+                        <div class="class-overlay">
+                            <div class="class-level">Intermedio</div>
+                        </div>
                     </div>
-                    <h3>Functional</h3>
-                    <p>Entrenamiento funcional para todo el cuerpo</p>
-                    <span class="class-time">Martes - 7:30 PM</span>
+                    <div class="class-content">
+                        <h3>Functional</h3>
+                        <p>Entrenamiento funcional de alta intensidad</p>
+                        <div class="class-details">
+                            <span class="class-time"><i class="fas fa-clock"></i> 7:30 PM</span>
+                            <span class="class-duration"><i class="fas fa-stopwatch"></i> 45 min</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="class-card">
                     <div class="class-image">
-                        <i class="fas fa-dancing"></i>
+                        <div class="class-overlay">
+                            <div class="class-level">Principiantes</div>
+                        </div>
                     </div>
-                    <h3>Ritmos Latinos</h3>
-                    <p>Mueve tu cuerpo con ritmos caribeños</p>
-                    <span class="class-time">Jueves - 7:30 PM</span>
+                    <div class="class-content">
+                        <h3>Ritmos Latinos</h3>
+                        <p>Baile latino con ritmos variados</p>
+                        <div class="class-details">
+                            <span class="class-time"><i class="fas fa-clock"></i> 7:30 PM</span>
+                            <span class="class-duration"><i class="fas fa-stopwatch"></i> 60 min</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -113,41 +178,215 @@
     <!-- Precios -->
     <section id="precios" class="pricing">
         <div class="container">
-            <h2>Planes y Precios</h2>
+            <div class="section-header">
+                <h2>Planes y Precios</h2>
+                <p>Elige el plan que mejor se adapte a tus necesidades</p>
+            </div>
             <div class="pricing-grid">
                 <div class="price-card">
-                    <h3>Mensual</h3>
-                    <div class="price">$68,000<span>/mes</span></div>
+                    <div class="price-header">
+                        <h3>Plan Mensual</h3>
+                        <div class="price">
+                            <span>$68,000</span>
+                            <small>/mes</small>
+                        </div>
+                    </div>
                     <ul>
-                        <li>Acceso completo en horarios</li>
-                        <li>Instructores disponibles</li>
-                        <li>Estacionamiento gratis</li>
-                        <li>Duchas disponibles</li>
+                        <li><i class="fas fa-check"></i> Acceso completo al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                        <li><i class="fas fa-check"></i> Estacionamiento gratis</li>
+                        <li><i class="fas fa-check"></i> Duchas con agua fría</li>
                     </ul>
-                    <button class="btn btn-primary">Elegir Plan</button>
+                    <button class="btn btn-primary" onclick="contactUs()">Únete Ahora</button>
                 </div>
                 <div class="price-card featured">
-                    <div class="featured-badge">Estudiante</div>
-                    <h3>Mensual Estudiante</h3>
-                    <div class="price">$60,000<span>/mes</span></div>
+                    <div class="featured-badge">Estudiantes</div>
+                    <div class="price-header">
+                        <h3>Plan Mensual Estudiante</h3>
+                        <div class="price">
+                            <span>$60,000</span>
+                            <small>/mes</small>
+                        </div>
+                    </div>
                     <ul>
-                        <li>Todo del plan Mensual</li>
-                        <li>Descuento con carnet</li>
-                        <li>Clases grupales incluidas</li>
-                        <li>Acceso a suplementos</li>
+                        <li><i class="fas fa-check"></i> Todo del plan mensual</li>
+                        <li><i class="fas fa-check"></i> Descuento con carné estudiantil</li>
+                        <li><i class="fas fa-check"></i> Acceso completo</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
                     </ul>
-                    <button class="btn btn-primary">Elegir Plan</button>
+                    <button class="btn btn-primary" onclick="contactUs()">Únete Ahora</button>
                 </div>
                 <div class="price-card">
-                    <h3>Pases</h3>
-                    <div class="price">$55,000<span>/10 entradas</span></div>
+                    <div class="price-header">
+                        <h3>Plan Trimestral</h3>
+                        <div class="price">
+                            <span>$170,000</span>
+                            <small>/3 meses</small>
+                        </div>
+                    </div>
                     <ul>
-                        <li>10 entradas (30 días)</li>
-                        <li>20 entradas: $75,000</li>
-                        <li>30 entradas: $95,000</li>
-                        <li>Sesión única: $8,000</li>
+                        <li><i class="fas fa-check"></i> Todo del plan mensual</li>
+                        <li><i class="fas fa-check"></i> Descuento por volumen</li>
+                        <li><i class="fas fa-check"></i> Acceso completo</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
                     </ul>
-                    <button class="btn btn-primary">Ver Todos</button>
+                    <button class="btn btn-primary" onclick="contactUs()">Únete Ahora</button>
+                </div>
+            </div>
+            
+            <div class="section-header" style="margin-top: 4rem;">
+                <h2>Tiqueteras y Sesiones</h2>
+                <p>Opciones flexibles para entrenar cuando quieras</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Tiquetera 10 Entradas</h3>
+                        <div class="price">
+                            <span>$55,000</span>
+                            <small>/30 días</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 10 entradas al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Válida por 30 días</li>
+                        <li><i class="fas fa-check"></i> Acceso completo</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Comprar Ahora</button>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Tiquetera 20 Entradas</h3>
+                        <div class="price">
+                            <span>$75,000</span>
+                            <small>/50 días</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 20 entradas al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Válida por 50 días</li>
+                        <li><i class="fas fa-check"></i> Acceso completo</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Comprar Ahora</button>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Tiquetera 30 Entradas</h3>
+                        <div class="price">
+                            <span>$95,000</span>
+                            <small>/80 días</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> 30 entradas al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Válida por 80 días</li>
+                        <li><i class="fas fa-check"></i> Acceso completo</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Comprar Ahora</button>
+                </div>
+            </div>
+            
+            <div class="section-header" style="margin-top: 4rem;">
+                <h2>Planes Extendidos</h2>
+                <p>Mejores precios para compromisos a largo plazo</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Plan 6 Meses</h3>
+                        <div class="price">
+                            <span>$330,000</span>
+                            <small>/6 meses</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acceso completo al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                        <li><i class="fas fa-check"></i> Descuento significativo</li>
+                        <li><i class="fas fa-check"></i> Todos los servicios incluidos</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Únete Ahora</button>
+                </div>
+                <div class="price-card featured">
+                    <div class="featured-badge">Mejor Valor</div>
+                    <div class="price-header">
+                        <h3>Plan Anual</h3>
+                        <div class="price">
+                            <span>$530,000</span>
+                            <small>/año</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Acceso completo al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                        <li><i class="fas fa-check"></i> Máximo descuento</li>
+                        <li><i class="fas fa-check"></i> Todos los servicios incluidos</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Únete Ahora</button>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Sesión Individual</h3>
+                        <div class="price">
+                            <span>$8,000</span>
+                            <small>/sesión</small>
+                        </div>
+                    </div>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Una sesión de entrenamiento</li>
+                        <li><i class="fas fa-check"></i> Acceso completo al gimnasio</li>
+                        <li><i class="fas fa-check"></i> Clases grupales incluidas</li>
+                        <li><i class="fas fa-check"></i> Sin compromiso</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="contactUs()">Comprar Ahora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Adicionales -->
+    <section class="services" style="background: var(--gray-50);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Servicios Adicionales</h2>
+                <p>Todo lo que necesitas para complementar tu entrenamiento</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Duchas con Agua Fría</h3>
+                    <p>Duchas disponibles con agua fría para refrescarte después del entrenamiento</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Incluido en todos los planes</span>
+                        <span><i class="fas fa-check"></i> Vestidores limpios</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Instructores Disponibles</h3>
+                    <p>Instructores disponibles durante todo el horario de funcionamiento</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> Asesoría personalizada</span>
+                        <span><i class="fas fa-check"></i> Rutinas personalizadas</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <h3>Batidos de Proteína</h3>
+                    <p>Batidos de proteína disponibles para la venta en horarios específicos</p>
+                    <div class="service-features">
+                        <span><i class="fas fa-check"></i> 9:30 AM - 1:00 PM</span>
+                        <span><i class="fas fa-check"></i> 3:00 PM - 5:30 PM</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,56 +395,64 @@
     <!-- Contacto -->
     <section id="contacto" class="contact">
         <div class="container">
-            <h2>Contáctanos</h2>
+            <div class="section-header">
+                <h2>Contáctanos</h2>
+                <p>Estamos aquí para ayudarte a alcanzar tus objetivos</p>
+            </div>
             <div class="contact-content">
                 <div class="contact-info">
                     <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Ubicación</h4>
-                            <p>Centro de la ciudad, cerca de la plaza del carnaval</p>
+                            <p>San Juan de Pasto, centro de la ciudad, cerca de ferreterías, químicos y plaza del carnaval</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
                             <h4>Horarios</h4>
                             <p>Lun-Vie: 5:00 AM - 9:20 PM<br>Sáb: 8:00 AM - 12:30 PM</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-users"></i>
-                        <div>
-                            <h4>Redes Sociales</h4>
-                            <p>Instagram: @pimposgym<br>Facebook: pimposgym</p>
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Teléfono</h4>
+                            <p>+57 316 614 6101</p>
                         </div>
                     </div>
                 </div>
-                <form class="contact-form" id="contactForm">
-                    <input type="text" placeholder="Nombre" required>
-                    <input type="email" placeholder="Email" required>
-                    <textarea placeholder="Mensaje" rows="5" required></textarea>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mapa -->
-    <section class="map-section">
-        <div class="container">
-            <h2>Encuéntranos</h2>
-            <p class="map-description">Visítanos en el centro de la ciudad, cerca de ferreterías, químicos y la plaza del carnaval</p>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4783.596251815371!2d-77.2757833!3d1.2110030000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed4854fe83e81%3A0x50169723a0542b2!2sPimpos%20Gym!5e1!3m2!1sen!2sco!4v1751949141515!5m2!1sen!2sco" 
-                    width="100%" 
-                    height="450" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Tu email" required>
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -213,19 +460,27 @@
     <!-- Chat Widget -->
     <div class="chat-widget" id="chatWidget">
         <div class="chat-header" id="chatHeader">
-            <i class="fas fa-comments"></i>
-            <span>Chat en Vivo</span>
-            <button class="chat-close" id="chatClose">
+            <div class="chat-info">
+                <i class="fas fa-comments"></i>
+                <div>
+                    <div class="chat-title">Chat en vivo</div>
+                    <div class="chat-status">En línea</div>
+                </div>
+            </div>
+            <div class="chat-close" id="chatClose">
                 <i class="fas fa-times"></i>
-            </button>
+            </div>
         </div>
         <div class="chat-body" id="chatBody">
             <div class="chat-messages" id="chatMessages">
                 <div class="message bot">
-                    <div class="message-content">
-                        ¡Hola! ¿En qué puedo ayudarte hoy?
+                    <div class="message-avatar">
+                        <i class="fas fa-dumbbell"></i>
                     </div>
-                    <div class="message-time">Ahora</div>
+                    <div class="message-content">
+                        <div class="message-text">¡Hola! Soy el asistente virtual de Pimpos Gym. ¿En qué puedo ayudarte?</div>
+                        <div class="message-time">Ahora</div>
+                    </div>
                 </div>
             </div>
             <div class="chat-input">
@@ -236,38 +491,38 @@
             </div>
         </div>
     </div>
-
-    <!-- Chat Toggle Button -->
-    <button class="chat-toggle" id="chatToggle">
+    <div class="chat-toggle" id="chatToggle">
         <i class="fas fa-comments"></i>
-    </button>
+        <div class="chat-notification">1</div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Pimpos Gym</h4>
-                    <p>Gimnasio tradicional en el corazón de la ciudad</p>
-                    <div class="social-links">
-                        <a href="https://facebook.com/pimposgym" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://instagram.com/pimposgym" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#clases">Clases</a></li>
-                        <li><a href="#precios">Precios</a></li>
-                    </ul>
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="Pimpos Gym Logo" style="height:32px;vertical-align:middle;margin-right:10px;">
+                    <span style="display:none;">Pimpos Gym</span>
                 </div>
                 <div class="footer-section">
                     <h4>Horarios</h4>
-                    <p>Lunes - Viernes: 5:00 AM - 9:20 PM</p>
-                    <p>Sábado: 8:00 AM - 12:30 PM</p>
-                    <p>Domingo: Cerrado</p>
+                    <div class="footer-schedule">
+                        <div class="schedule-item">
+                            <span class="day">Lun-Vie:</span>
+                            <span class="time">5:00 AM - 9:20 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day">Sábado:</span>
+                            <span class="time">8:00 AM - 12:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> San Juan de Pasto</p>
+                        <p><i class="fas fa-phone"></i> +57 316 614 6101</p>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -276,6 +531,116 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Funciones básicas
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function contactUs() {
+            scrollToSection('contacto');
+        }
+
+        // Navegación móvil
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+
+        // Chat widget
+        const chatToggle = document.getElementById('chatToggle');
+        const chatWidget = document.getElementById('chatWidget');
+        const chatClose = document.getElementById('chatClose');
+        const chatSend = document.getElementById('chatSend');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
+
+        if (chatToggle) {
+            chatToggle.addEventListener('click', () => {
+                chatWidget.classList.add('active');
+                chatToggle.style.display = 'none';
+            });
+        }
+
+        if (chatClose) {
+            chatClose.addEventListener('click', () => {
+                chatWidget.classList.remove('active');
+                chatToggle.style.display = 'flex';
+            });
+        }
+
+        if (chatSend && chatInput) {
+            chatSend.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatInput.value = '';
+                
+                // Simular respuesta del bot
+                setTimeout(() => {
+                    addMessage('Gracias por tu mensaje. Te contactaremos pronto.', 'bot');
+                }, 1000);
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const time = new Date().toLocaleTimeString('es-ES', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-${sender === 'user' ? 'user' : 'dumbbell'}"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${text}</div>
+                    <div class="message-time">${time}</div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Formulario de contacto
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                contactForm.reset();
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html> 

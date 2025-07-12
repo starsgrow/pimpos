@@ -1,0 +1,25 @@
+{
+  "name": "Pimpos Gym",
+  "short_name": "Pimpos",
+  "description": "Gimnasio tradicional en el centro de la ciudad con clases de Rumba, Functional y Ritmos Latinos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#dc2626",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9IiNkYzI2MjYiLz4KPHN2ZyB4PSI0OCIgeT0iNDgiIHdpZHRoPSI5NiIgaGVpZ2h0PSI5NiIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+CjxwYXRoIGQ9Ik0xMiAyQzEzLjEgMiAxNCAyLjkgMTQgNFY2QzE0IDcuMSAxMy4xIDggMTIgOEMxMC45IDggMTAgNy4xIDEwIDZWNEMxMCAyLjkgMTAuOSAyIDEyIDJaIi8+CjxwYXRoIGQ9Ik0xMiAxNkMxMy4xIDE2IDE0IDE2LjkgMTQgMThWMjBDMTQgMjEuMSAxMy4xIDIyIDEyIDIyQzEwLjkgMjIgMTAgMjEuMSAxMCAyMFYxOEMxMCAxNi45IDEwLjkgMTYgMTIgMTZaIi8+CjxwYXRoIGQ9Ik0yIDhDMy4xIDggNCA4LjkgNCAxMFYxNEM0IDE1LjEgMy4xIDE2IDIgMTZDMCAxNiAwIDE1LjEgMCAxNFYxMEMwIDguOSAwIDggMiA4WiIvPgo8cGF0aCBkPSJNMjIgOEMyMy4xIDggMjQgOC45IDI0IDEwVjE0QzI0IDE1LjEgMjMuMSAxNiAyMiAxNkMyMC45IDE2IDIwIDE1LjEgMjAgMTRWMThDMjAgMTYuOSAyMC45IDE2IDIyIDE2WiIvPgo8L3N2Zz4KPC9zdmc+",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9IiNkYzI2MjYiLz4KPHN2ZyB4PSIxMjgiIHk9IjEyOCIgd2lkdGg9IjI1NiIgaGVpZ2h0PSIyNTYiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPgo8cGF0aCBkPSJNMTIgMkMxMy4xIDIgMTQgMi45IDE0IDRWNkMxNCA3LjEgMTMuMSA4IDEyIDhDMTAuOSA4IDEwIDcuMSAxMCA2VjRDMTAgMi45IDEwLjkgMiAxMiAyWiIvPgo8cGF0aCBkPSJNMTIgMTZDMTMuMSAxNiAxNCAxNi45IDE0IDE4VjIwQzE0IDIxLjEgMTMuMSAyMiAxMiAyMkMxMC45IDIyIDEwIDIxLjEgMTAgMjBWMThDMTAgMTYuOSAxMC45IDE2IDEyIDE2WiIvPgo8cGF0aCBkPSJNMiA4QzMuMSA4IDQgOC45IDQgMTBWMTRDNCAxNS4xIDMuMSAxNiAyIDE2QzAgMTYgMCAxNS4xIDAgMTRWMThDMC4xIDguOSAwIDggMiA4WiIvPgo8cGF0aCBkPSJNMjIgOEMyMy4xIDggMjQgOC45IDI0IDEwVjE0QzI0IDE1LjEgMjMuMSAxNiAyMiAxNkMyMC45IDE2IDIwIDE1LjEgMjAgMTRWMThDMjAgMTYuOSAyMC45IDE2IDIyIDE2WiIvPgo8L3N2Zz4KPC9zdmc+",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["fitness", "health", "sports"],
+  "lang": "es",
+  "dir": "ltr"
+} 
