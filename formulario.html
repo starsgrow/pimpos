@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valoración Integral - Pimpos Gym</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon-form.png">
+    <style>
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            background: #fafbfc;
+        }
+
+        .form-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        .form-group input[type="number"] {
+            max-width: 200px;
+        }
+
+        .form-group.required label::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-submit:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e1e5e9;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #c82333;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Slider Styles */
+        .slider-container {
+            margin-top: 1rem;
+        }
+
+        .slider-container input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #e1e5e9;
+            outline: none;
+            -webkit-appearance: none;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider-container input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider-container input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .slider-labels span {
+            flex: 1;
+            text-align: center;
+        }
+
+        .slider-description {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Screen Time Instructions */
+        .screen-time-instructions {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .screen-time-instructions p {
+            margin: 0.5rem 0;
+            color: #1565c0;
+        }
+
+        .screen-time-instructions ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .screen-time-instructions li {
+            margin: 0.25rem 0;
+            color: #1565c0;
+        }
+
+        .screen-time-instructions strong {
+            color: #0d47a1;
+        }
+
+        /* Data Policy Styles */
+        .data-policy-content {
+            margin-bottom: 1rem;
+        }
+
+        .data-policy-content p {
+            margin-bottom: 0.75rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .checkbox-group {
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 4px;
+            background: white;
+            flex-shrink: 0;
+            margin-top: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: white;
+            font-size: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .checkbox-label:hover .checkmark {
+            border-color: var(--primary-color);
+        }
+
+        .checkbox-label.required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        /* Phone Input Styles */
+        .phone-input-group {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+        }
+
+        .country-code {
+            flex: 0 0 auto;
+            min-width: 110px;
+            max-width: 120px;
+            padding: 12px 8px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
+            font-size: 16px;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+            text-align: center;
+        }
+
+        .country-code:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        .phone-input-group input[type="tel"] {
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (max-width: 768px) {
+            .phone-input-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .country-code {
+                min-width: auto;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            
+            .form-section {
+                padding: 1rem;
+            }
+
+            .slider-labels {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <img src="images/natvar-logo.png" alt="Pimpos Gym Logo" style="height:40px;vertical-align:middle;margin-right:10px;">
+                    <span style="display:none;">Pimpos Gym</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="index.html#clases" class="nav-link">Clases</a></li>
+                <li><a href="index.html#precios" class="nav-link">Precios</a></li>
+                <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 80px; min-height: 100vh; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
+        <div class="container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Volver al inicio
+            </a>
+
+            <div class="form-container">
+                <div class="form-header">
+                    <h1><i class="fas fa-clipboard-list"></i> Valoración Integral y Estilo de Vida</h1>
+                    <p>Completa este formulario para recibir una evaluación personalizada de tu estilo de vida y recomendaciones específicas</p>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="alert alert-success" id="successAlert">
+                    <i class="fas fa-check-circle"></i>
+                    ¡Formulario enviado exitosamente! Te contactaremos pronto con tu evaluación personalizada.
+                </div>
+
+                <div class="alert alert-error" id="errorAlert">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="errorMessage">Ha ocurrido un error. Por favor, intenta nuevamente.</span>
+                </div>
+
+                <form id="assessmentForm">
+                    <!-- Datos básicos -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Datos Básicos</h3>
+                        
+                        <div class="form-group required">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="edad">Edad</label>
+                            <input type="number" id="edad" name="edad" min="1" max="120" required>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="sexo">Sexo</label>
+                            <select id="sexo" name="sexo" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Masculino">Masculino</option>
+                                <option value="Femenino">Femenino</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="telefono">Teléfono</label>
+                            <div class="phone-input-group">
+                                <select id="codigo_pais" name="codigo_pais" class="country-code" required>
+                                    <option value="+57">🇨🇴 +57</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+34">🇪🇸 +34</option>
+                                    <option value="+52">🇲🇽 +52</option>
+                                    <option value="+54">🇦🇷 +54</option>
+                                    <option value="+56">🇨🇱 +56</option>
+                                    <option value="+51">🇵🇪 +51</option>
+                                    <option value="+593">🇪🇨 +593</option>
+                                    <option value="+58">🇻🇪 +58</option>
+                                    <option value="+595">🇵🇾 +595</option>
+                                    <option value="+598">🇺🇾 +598</option>
+                                    <option value="+591">🇧🇴 +591</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                                <input type="text" id="codigo_pais_otro" name="codigo_pais_otro" class="country-code" placeholder="+57" style="display:none;max-width:70px;" pattern="\+[0-9]{1,4}" title="Incluye el símbolo + y el código de país" autocomplete="off">
+                                <input type="tel" id="telefono" name="telefono" placeholder="Número de teléfono" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="objetivo_principal">Objetivo principal</label>
+                            <select id="objetivo_principal" name="objetivo_principal" required>
+                                <option value="">Selecciona tu objetivo principal</option>
+                                <option value="Ganar masa muscular">Ganar masa muscular</option>
+                                <option value="Perder grasa">Perder grasa</option>
+                                <option value="Mejorar salud">Mejorar salud</option>
+                                <option value="Mantener estado físico">Mantener estado físico</option>
+                                <option value="Más energía">Más energía</option>
+                                <option value="Menos estrés">Menos estrés</option>
+                                <option value="Salud mental">Salud mental</option>
+                                <option value="Mejorar autoestima">Mejorar autoestima</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Nutrición -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-apple-alt"></i> Nutrición</h3>
+                        
+                        <div class="form-group required">
+                            <label for="comidas_dia">¿Cuántas comidas principales haces al día?</label>
+                            <select id="comidas_dia" name="comidas_dia" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4 o más">4 o más</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="proteina_cada_comida">¿Incluyes fuentes de proteína en cada comida principal?</label>
+                            <select id="proteina_cada_comida" name="proteina_cada_comida" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="A veces">A veces</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="grasas_saludables">¿Incluyes grasas saludables en tu alimentación semanal?</label>
+                            <select id="grasas_saludables" name="grasas_saludables" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="A veces">A veces</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="frutas_verduras">¿Comes frutas y verduras todos los días?</label>
+                            <select id="frutas_verduras" name="frutas_verduras" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="A veces">A veces</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="agua_diaria">¿Cuántos litros de agua tomas al día en promedio?</label>
+                            <select id="agua_diaria" name="agua_diaria" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Menos de 1 litro">Menos de 1 litro</option>
+                                <option value="De 1 a 2 litros">De 1 a 2 litros</option>
+                                <option value="Más de 2 litros">Más de 2 litros</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="ultraprocesados_dia">¿Cuántos alimentos ultraprocesados consumes diariamente?<br><small>(Ejemplos: gaseosas, snacks, galletas, dulces, embutidos, comidas rápidas)</small></label>
+                            <select id="ultraprocesados_dia" name="ultraprocesados_dia" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Ninguno">Ninguno</option>
+                                <option value="Menos de 3">Menos de 3</option>
+                                <option value="Más de 3">Más de 3</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="azucar_diaria">¿Consumes azúcar todos los días?</label>
+                            <select id="azucar_diaria" name="azucar_diaria" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="alcohol">¿Con qué frecuencia tomas bebidas alcohólicas?</label>
+                            <select id="alcohol" name="alcohol" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Nunca">Nunca</option>
+                                <option value="1 o más veces por semana">1 o más veces por semana</option>
+                                <option value="En ocasiones especiales">En ocasiones especiales</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Sueño y descanso -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-bed"></i> Sueño y Descanso</h3>
+                        
+                        <div class="form-group required">
+                            <label for="horas_sueno">¿Cuántas horas duermes en promedio por noche?</label>
+                            <select id="horas_sueno" name="horas_sueno" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Menos de 5">Menos de 5</option>
+                                <option value="5 a 6">5 a 6</option>
+                                <option value="6 a 7">6 a 7</option>
+                                <option value="Más de 7">Más de 7</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="descansado_amanecer">¿Te sientes descansado al despertar?</label>
+                            <select id="descansado_amanecer" name="descansado_amanecer" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Siempre">Siempre</option>
+                                <option value="A veces">A veces</option>
+                                <option value="Nunca">Nunca</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="dificultad_dormir">¿Tienes dificultades para dormir o permanecer dormido?</label>
+                            <select id="dificultad_dormir" name="dificultad_dormir" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Sí">Sí</option>
+                                <option value="No">No</option>
+                                <option value="A veces">A veces</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Actividad física -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-dumbbell"></i> Actividad Física</h3>
+                        
+                        <div class="form-group required">
+                            <label for="dias_gimnasio">¿Cuántos días a la semana vas al gimnasio o realizas ejercicio estructurado?</label>
+                            <select id="dias_gimnasio" name="dias_gimnasio" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5 o más">5 o más</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="caminar_diario">¿Cuánto tiempo caminas al día en promedio?</label>
+                            <select id="caminar_diario" name="caminar_diario" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Menos de 15 minutos">Menos de 15 minutos</option>
+                                <option value="15 a 30 minutos">15 a 30 minutos</option>
+                                <option value="30 a 60 minutos">30 a 60 minutos</option>
+                                <option value="Más de 60 minutos">Más de 60 minutos</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="actividad_vigorosa_fuera">¿Con qué frecuencia realizas actividad física vigorosa fuera del gimnasio?<br><small>(correr, deportes intensos, HIIT, natación, fútbol, etc.)</small></label>
+                            <select id="actividad_vigorosa_fuera" name="actividad_vigorosa_fuera" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Nunca">Nunca</option>
+                                <option value="1 vez por semana">1 vez por semana</option>
+                                <option value="2 a 3 veces por semana">2 a 3 veces por semana</option>
+                                <option value="Más de 3 veces por semana">Más de 3 veces por semana</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Gestión del estrés -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-brain"></i> Gestión del Estrés</h3>
+                        
+                        <div class="form-group required">
+                            <label for="estres_1_10">¿En una escala de 1 a 10, qué tan estresado(a) te consideras actualmente?</label>
+                            <div class="slider-container">
+                                <input type="range" id="estres_1_10" name="estres_1_10" min="1" max="10" value="5" required>
+                                <div class="slider-labels">
+                                    <span>1</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5</span>
+                                    <span>6</span>
+                                    <span>7</span>
+                                    <span>8</span>
+                                    <span>9</span>
+                                    <span>10</span>
+                                </div>
+                                <div class="slider-description">
+                                    <small>1 = nada de estrés | 10 = estrés máximo</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bienestar, hábitos, emociones -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-heart"></i> Bienestar, Hábitos y Emociones</h3>
+                        
+                        <div class="form-group required">
+                            <label for="motivacion_1_10">¿Qué tan motivado(a) te sientes actualmente para alcanzar tus objetivos de salud y bienestar?</label>
+                            <div class="slider-container">
+                                <input type="range" id="motivacion_1_10" name="motivacion_1_10" min="1" max="10" value="5" required>
+                                <div class="slider-labels">
+                                    <span>1</span>
+                                    <span>2</span>
+                                    <span>3</span>
+                                    <span>4</span>
+                                    <span>5</span>
+                                    <span>6</span>
+                                    <span>7</span>
+                                    <span>8</span>
+                                    <span>9</span>
+                                    <span>10</span>
+                                </div>
+                                <div class="slider-description">
+                                    <small>1 = nada motivado | 10 = totalmente motivado</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="cumple_rutina">¿Con qué frecuencia cumples tus rutinas diarias (alimentación, ejercicio, descanso, etc.)?</label>
+                            <select id="cumple_rutina" name="cumple_rutina" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Siempre">Siempre</option>
+                                <option value="Casi siempre">Casi siempre</option>
+                                <option value="A veces">A veces</option>
+                                <option value="Casi nunca">Casi nunca</option>
+                                <option value="Nunca">Nunca</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="bienestar_emocional">¿En general, cómo describirías tu bienestar emocional actual?</label>
+                            <select id="bienestar_emocional" name="bienestar_emocional" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Muy bueno">Muy bueno</option>
+                                <option value="Bueno">Bueno</option>
+                                <option value="Regular">Regular</option>
+                                <option value="Malo">Malo</option>
+                                <option value="Muy malo">Muy malo</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="pantalla_ocio">¿Cuánto tiempo al día pasas frente a pantallas para actividades de ocio?</label>
+                            <div class="screen-time-instructions">
+                                <p><strong>Tip: Para saber tu tiempo en pantalla con tu celular, revisa:</strong></p>
+                                <ul>
+                                    <li><strong>Android:</strong> Ajustes → Bienestar digital</li>
+                                    <li><strong>iPhone:</strong> Configuración → Tiempo en pantalla</li>
+                                </ul>
+                                <p><small>(Incluye celular, TV, computador, tablet para redes sociales, videos, videojuegos, etc.)</small></p>
+                            </div>
+                            <select id="pantalla_ocio" name="pantalla_ocio" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Menos de 1 hora">Menos de 1 hora</option>
+                                <option value="1 a 3 horas">1 a 3 horas</option>
+                                <option value="3 a 6 horas">3 a 6 horas</option>
+                                <option value="Más de 6 horas">Más de 6 horas</option>
+                                <option value="No estoy seguro(a)">No estoy seguro(a)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Hábitos de consumo -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-smoking-ban"></i> Hábitos de Consumo</h3>
+                        
+                        <div class="form-group required">
+                            <label for="fuma_tabaco_o_vaper">¿Fumas cigarrillo, consumes tabaco o usas vapeadores (con o sin nicotina)?</label>
+                            <select id="fuma_tabaco_o_vaper" name="fuma_tabaco_o_vaper" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Nunca">Nunca</option>
+                                <option value="Ocasionalmente">Ocasionalmente</option>
+                                <option value="A diario">A diario</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="otras_sustancias">¿Consumes alguna otra sustancia psicoactiva?</label>
+                            <select id="otras_sustancias" name="otras_sustancias" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="Nunca">Nunca</option>
+                                <option value="Ocasionalmente">Ocasionalmente</option>
+                                <option value="A diario">A diario</option>
+                                <option value="Prefiero no responder">Prefiero no responder</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Política de Datos Personales -->
+                    <div class="form-section" style="background: #f8f9fa; border: 2px solid #e1e5e9;">
+                        <h3><i class="fas fa-shield-alt"></i> Política de Tratamiento de Datos Personales</h3>
+                        <div class="data-policy-content">
+                            <p>Los datos suministrados serán tratados conforme a nuestra <a href="politica-datos.html" target="_blank" style="color: var(--primary-color); font-weight: 600;">Política de Tratamiento de Datos Personales</a>.</p>
+                            <p>Serán utilizados exclusivamente para valoración, seguimiento y acompañamiento de tu proceso de salud y bienestar.</p>
+                            <p>Puedes ejercer tus derechos de acceso, actualización o supresión contactándonos en <a href="mailto:pimposgym@gmail.com" style="color: var(--primary-color); font-weight: 600;">pimposgym@gmail.com</a>.</p>
+                        </div>
+                        
+                        <div class="checkbox-group required" style="margin-top: 1.5rem;">
+                            <label class="checkbox-label required">
+                                <input type="checkbox" id="acepto_politica" name="acepto_politica" required>
+                                <span class="checkmark"></span>
+                                Acepto la política de tratamiento de datos personales y autorizo el uso de mi información para los fines descritos.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-submit">
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Enviando formulario...</p>
+                        </div>
+                        <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Valoración
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/natvar-logo.png" alt="Pimpos Gym Logo" style="height:32px;vertical-align:middle;margin-right:10px;">
+                    <span style="display:none;">Pimpos Gym</span>
+                </div>
+                <div class="footer-section">
+                    <h4>Horarios</h4>
+                    <div class="footer-schedule">
+                        <div class="schedule-item">
+                            <span class="day">Lun-Vie:</span>
+                            <span class="time">5:00 AM - 9:20 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day">Sábado:</span>
+                            <span class="time">8:00 AM - 12:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-map-marker-alt"></i> San Juan de Pasto</p>
+                        <p><i class="fas fa-phone"></i> +57 316 614 6101</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Pimpos Gym. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación móvil
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form handling
+        const form = document.getElementById('assessmentForm');
+        const loading = document.getElementById('loading');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
+        const progressFill = document.getElementById('progressFill');
+
+        // Declarar submitBtn solo una vez
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Webhook URL
+        const WEBHOOK_URL = 'https://olympo-n8n.bsnk1a.easypanel.host/webhook-test/estilo-de-vida';
+
+        // Update progress bar
+        function updateProgress() {
+            const requiredFields = form.querySelectorAll('[required]');
+            let filledCount = 0;
+            
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox') {
+                    if (field.checked) filledCount++;
+                } else {
+                    if (field.value.trim() !== '') filledCount++;
+                }
+            });
+            
+            const progress = (filledCount / requiredFields.length) * 100;
+            progressFill.style.width = progress + '%';
+        }
+
+        // Add event listeners to all form fields
+        form.querySelectorAll('input, select').forEach(field => {
+            field.addEventListener('input', updateProgress);
+            field.addEventListener('change', updateProgress);
+        });
+
+        // Mostrar/ocultar input de código personalizado
+        const codigoPaisSelect = document.getElementById('codigo_pais');
+        const codigoPaisOtro = document.getElementById('codigo_pais_otro');
+        if (codigoPaisSelect && codigoPaisOtro) {
+            codigoPaisSelect.addEventListener('change', function() {
+                if (this.value === 'otro') {
+                    codigoPaisOtro.style.display = 'block';
+                    codigoPaisOtro.required = true;
+                } else {
+                    codigoPaisOtro.style.display = 'none';
+                    codigoPaisOtro.required = false;
+                    codigoPaisOtro.value = '';
+                }
+            });
+        }
+
+        // Habilitar/deshabilitar el botón de enviar según la política
+        const politicaCheckbox = document.getElementById('acepto_politica');
+        if (politicaCheckbox && submitBtn) {
+            politicaCheckbox.addEventListener('change', function() {
+                submitBtn.disabled = !this.checked;
+            });
+            // Por si el usuario recarga y el checkbox ya está marcado
+            submitBtn.disabled = !politicaCheckbox.checked;
+        }
+
+
+        // Form submission
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide previous alerts
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+
+            // Validar política de datos
+            // const politicaCheckbox = document.getElementById('acepto_politica'); // Eliminado
+            // if (!politicaCheckbox.checked) { // Eliminado
+            //     errorMessage.textContent = 'Debes aceptar la política de tratamiento de datos personales para continuar.'; // Eliminado
+            //     errorAlert.style.display = 'block'; // Eliminado
+            //     window.scrollTo({ top: 0, behavior: 'smooth' }); // Eliminado
+            //     return; // Eliminado
+            // } // Eliminado
+
+            // Show loading
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+
+            try {
+                // Collect form data
+                const formData = new FormData(form);
+                const jsonData = {};
+
+                // Convert FormData to JSON object
+                for (let [key, value] of formData.entries()) {
+                    jsonData[key] = value;
+                }
+
+                // Combinar código de país (de la lista o personalizado) con el teléfono, sin + ni espacio
+                let codigoPaisFinal = formData.get('codigo_pais');
+                if (codigoPaisFinal === 'otro') {
+                    codigoPaisFinal = formData.get('codigo_pais_otro') || '';
+                }
+                const telefono = formData.get('telefono');
+                if (codigoPaisFinal && telefono) {
+                    // Eliminar cualquier caracter que no sea número
+                    const codigoLimpio = (codigoPaisFinal + '').replace(/[^0-9]/g, '');
+                    const telefonoLimpio = (telefono + '').replace(/[^0-9]/g, '');
+                    jsonData.telefono = codigoLimpio + telefonoLimpio;
+                    delete jsonData.codigo_pais;
+                    delete jsonData.codigo_pais_otro;
+                }
+
+                // Send to webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonData)
+                });
+
+                if (response.ok) {
+                    // Success
+                    successAlert.style.display = 'block';
+                    form.reset();
+                    progressFill.style.width = '0%';
+                    
+                    // Scroll to top to show success message
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Ha ocurrido un error al enviar el formulario. Por favor, intenta nuevamente.';
+                errorAlert.style.display = 'block';
+                
+                // Scroll to top to show error message
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } finally {
+                // Hide loading
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        // Initialize progress bar
+        updateProgress();
+    </script>
+</body>
+</html> 
