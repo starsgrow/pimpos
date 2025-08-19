@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Depurador de facturas Pimpos</title>
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; background: #f0f0f0; }
+  textarea { width: 100%; height: 150px; padding: 10px; font-size: 16px; }
+  button { padding: 10px 20px; font-size: 16px; margin-top: 10px; cursor: pointer; margin-right: 10px; }
+  #respuesta { margin-top: 20px; white-space: pre-wrap; background: #fff; padding: 10px; border-radius: 5px; }
+  #copiarBtn { display: none; margin-top: 10px; padding: 10px 20px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h2><b>Depurador de facturas Pimpos</b></h2>
+<textarea id="mensaje" placeholder="Escribe o pega la factura aquí..."></textarea>
+<br>
+<button onclick="enviarMensaje()">Depurar</button>
+<button onclick="limpiarTexto()">Limpiar</button>
+
+<div id="respuesta">Aquí aparecerá la respuesta del webhook</div>
+<button id="copiarBtn" onclick="copiarMensaje()">Copiar mensaje 📋</button>
+
+<script>
+async function enviarMensaje() {
+  const mensajeInput = document.getElementById("mensaje").value.trim();
+  const respuestaDiv = document.getElementById("respuesta");
+  const copiarBtn = document.getElementById("copiarBtn");
+
+  if (!mensajeInput) {
+    alert("Por favor ingresa un mensaje o factura");
+    return;
+  }
+
+  // Mostrar mensaje de carga
+  respuestaDiv.textContent = "Cargando, espera un momento :D";
+  copiarBtn.style.display = "none";
+
+  const payload = { mensaje: mensajeInput };
+
+  try {
+    const response = await fetch("https://olympo-n8n.bsnk1a.easypanel.host/webhook/recibospimpos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const data = await response.json();
+
+    // Mostrar el mensaje limpio
+    const mensajeLimpio = data.text.replace(/^"|"$/g, '');
+    respuestaDiv.textContent = mensajeLimpio;
+
+    // Mostrar botón de copiar
+    copiarBtn.style.display = "inline-block";
+
+  } catch (err) {
+    console.error(err);
+    respuestaDiv.textContent = "Ocurrió un error al comunicarse con n8n";
+    copiarBtn.style.display = "none";
+  }
+}
+
+function copiarMensaje() {
+  const respuestaDiv = document.getElementById("respuesta");
+  navigator.clipboard.writeText(respuestaDiv.textContent)
+    .then(() => alert("Mensaje copiado al portapapeles 📋"))
+    .catch(() => alert("No se pudo copiar el mensaje"));
+}
+
+function limpiarTexto() {
+  document.getElementById("mensaje").value = "";
+  document.getElementById("respuesta").textContent = "Aquí aparecerá la respuesta del webhook";
+  document.getElementById("copiarBtn").style.display = "none";
+}
+</script>
+
+</body>
+</html>
