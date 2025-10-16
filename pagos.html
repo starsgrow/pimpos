@@ -10,18 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Load Inter Font (Tailwind standard) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <style>
-        /* Define custom theme colors and font */
-        :root {
-            --primary-red: #dc3545;
-        }
-
-        /* Custom configuration for Tailwind */
+    <script>
+        // Custom configuration for Tailwind
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'primary-red': 'var(--primary-red)',
+                        'primary-red': '#dc3545',
                         'whatsapp-green': '#25d366',
                         'accent-blue': '#1565c0',
                     },
@@ -30,6 +25,12 @@
                     },
                 }
             }
+        }
+    </script>
+    <style>
+        /* Define custom theme colors and font */
+        :root {
+            --primary-red: #dc3545;
         }
 
         /* Custom Styles for Header and Mobile Menu (replicated from original CSS intent) */
@@ -73,14 +74,24 @@
                 width: 100%;
                 background-color: #fff;
                 box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                padding: 1rem 0;
+                padding: 0.5rem 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
             }
             .nav-menu.active {
                 display: flex;
+                max-height: 400px;
             }
             .nav-menu li {
-                padding: 0.75rem 1.5rem;
+                padding: 0.5rem 1.5rem;
                 border-bottom: 1px solid #eee;
+            }
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+            .nav-menu a {
+                font-size: 0.95rem;
             }
             .nav-toggle {
                 display: flex;
@@ -168,7 +179,7 @@
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="pt-24 sm:pt-28 pb-12">
+    <main class="pt-20 sm:pt-24 pb-12">
         <div class="container mx-auto px-4">
             
             <!-- Back Link -->
@@ -318,12 +329,16 @@
             });
         }
 
-        // 2. Header scroll effect
+        // 2. Header scroll effect and close menu on scroll (mobile)
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
+            }
+            // Close menu when scrolling on mobile
+            if (navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
             }
         });
 
@@ -335,6 +350,14 @@
                     navMenu.classList.remove('active');
                 }
             });
+        });
+
+        // 4. Close menu when clicking outside of it
+        document.addEventListener('click', (event) => {
+            const isClickInsideNav = navMenu.contains(event.target) || navToggle.contains(event.target);
+            if (!isClickInsideNav && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+            }
         });
 
     </script>
