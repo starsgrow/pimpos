@@ -10,97 +10,28 @@
     <link rel="icon" type="image/png" href="images/favicon-form.png">
     <style>
         .form-container {
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 3rem;
+            padding: 2rem;
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
-            position: relative;
-            overflow: hidden;
-            animation: formContainerFadeIn 0.8s ease-out;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        @keyframes formContainerFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), #ff6b6b, var(--primary-color));
-            background-size: 200% 100%;
-            animation: gradientMove 3s ease infinite;
-        }
-
-        @keyframes gradientMove {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         .form-section {
-            margin-bottom: 0;
-            padding: 2.5rem;
-            border: none;
-            border-radius: 16px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .form-section.active::before {
-            left: 100%;
-        }
-
-        .form-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            background: #fafbfc;
         }
 
         .form-section h3 {
             color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-size: 1.75rem;
-            border-bottom: none;
-            padding-bottom: 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-        }
-
-        .form-section h3 i {
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
         }
 
         .form-group {
@@ -109,25 +40,20 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
             font-weight: 600;
-            color: #2c3e50;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
+            color: #333;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e8ecef;
-            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 6px;
             font-size: 16px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: white;
-            font-family: 'Roboto', sans-serif;
-            position: relative;
+            transition: border-color 0.3s ease;
         }
 
         .form-group input:focus,
@@ -135,16 +61,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.1), 0 2px 12px rgba(220, 53, 69, 0.15);
-            transform: translateY(-1px) scale(1.01);
-        }
-
-        .form-group input:hover,
-        .form-group select:hover,
-        .form-group textarea:hover {
-            border-color: #d1d8dd;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            transform: translateY(-1px);
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
         }
 
         .form-group input[type="number"] {
@@ -162,405 +79,81 @@
         }
 
         .btn-submit {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
+            background: var(--primary-color);
             color: white;
-            padding: 16px 48px;
+            padding: 15px 40px;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 18px;
-            font-weight: 700;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
-            position: relative;
-            overflow: hidden;
-            transform: perspective(1000px);
-        }
-
-        .btn-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .btn-submit:hover::before {
-            left: 100%;
+            gap: 10px;
         }
 
         .btn-submit:hover {
-            transform: translateY(-3px) rotateX(5deg);
-            box-shadow: 0 8px 30px rgba(220, 53, 69, 0.4), 0 0 20px rgba(220, 53, 69, 0.2);
-        }
-
-        .btn-submit:active {
-            transform: translateY(-1px) rotateX(2deg);
+            background: #c82333;
+            transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
 
         .btn-submit:disabled {
-            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+            background: #6c757d;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
-            opacity: 0.6;
-        }
-
-        .btn-submit i {
-            font-size: 1.1rem;
         }
 
         .alert {
-            padding: 1.25rem 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
             display: none;
-            animation: slideDown 0.4s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            align-items: center;
-            gap: 12px;
-            font-weight: 500;
-        }
-
-        .alert.show {
-            display: flex;
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .alert i {
-            font-size: 1.5rem;
         }
 
         .alert-success {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            background: #d4edda;
             color: #155724;
-            border: 2px solid #28a745;
-        }
-
-        .alert-success i {
-            color: #28a745;
+            border: 1px solid #c3e6cb;
         }
 
         .alert-error {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            background: #f8d7da;
             color: #721c24;
-            border: 2px solid #dc3545;
-        }
-
-        .alert-error i {
-            color: #dc3545;
+            border: 1px solid #f5c6cb;
         }
 
         .progress-bar {
             width: 100%;
-            height: 10px;
-            background: #e8ecef;
-            border-radius: 20px;
+            height: 8px;
+            background: #e1e5e9;
+            border-radius: 4px;
             margin-bottom: 2rem;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-color) 0%, #ff6b6b 50%, var(--primary-color) 100%);
-            background-size: 200% 100%;
+            background: var(--primary-color);
             width: 0%;
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
-            position: relative;
-            overflow: hidden;
-            animation: progressShimmer 2s ease-in-out infinite;
-        }
-
-        @keyframes progressShimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Step Wizard Styles */
-        .step-indicator {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 3rem;
-            position: relative;
-            padding: 0 30px;
-        }
-
-        .step-indicator::before {
-            content: '';
-            position: absolute;
-            top: 24px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #e8ecef 0%, #e8ecef 100%);
-            z-index: 0;
-            border-radius: 3px;
-        }
-
-        .step-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            flex: 1;
-            z-index: 1;
-            cursor: default;
-        }
-
-        .step-number {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: white;
-            color: #95a5a6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            margin-bottom: 10px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 3px solid #e8ecef;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            font-size: 1rem;
-        }
-
-        .step-item.active .step-number {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            color: white;
-            transform: scale(1.15);
-            border-color: transparent;
-            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4), 0 0 0 4px rgba(220, 53, 69, 0.1);
-            animation: pulse 2s infinite, stepGlow 3s ease-in-out infinite;
-        }
-
-        @keyframes stepGlow {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4), 0 0 0 4px rgba(220, 53, 69, 0.1);
-            }
-            50% {
-                box-shadow: 0 6px 30px rgba(220, 53, 69, 0.6), 0 0 0 8px rgba(220, 53, 69, 0.15);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4), 0 0 0 4px rgba(220, 53, 69, 0.1);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(220, 53, 69, 0.5), 0 0 0 6px rgba(220, 53, 69, 0.15);
-            }
-        }
-
-        .step-item.completed .step-number {
-            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 2px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .step-item.completed .step-number::after {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-        }
-
-        .step-label {
-            font-size: 0.8rem;
-            color: #7f8c8d;
-            text-align: center;
-            font-weight: 600;
-            max-width: 100px;
-            transition: all 0.3s ease;
-        }
-
-        .step-item.active .step-label {
-            color: var(--primary-color);
-            font-weight: 700;
-            transform: scale(1.05);
-        }
-
-        .step-item.completed .step-label {
-            color: #10b981;
-        }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
-            animation: fadeInSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes fadeInSlide {
-            from {
-                opacity: 0;
-                transform: translateX(30px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-        }
-
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 2px solid #f0f0f0;
-            gap: 1rem;
-        }
-
-        .btn-nav {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .btn-nav::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255,255,255,0.2);
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .btn-nav:hover::before {
-            transform: translateX(0);
-        }
-
-        .btn-prev {
-            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
-            color: white;
-        }
-
-        .btn-prev:hover:not(:disabled) {
-            transform: translateX(-3px) translateY(-2px);
-            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
-        }
-
-        .btn-next {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            color: white;
-        }
-
-        .btn-next:hover:not(:disabled) {
-            transform: translateX(3px) translateY(-2px);
-            box-shadow: 0 4px 16px rgba(220, 53, 69, 0.4);
-        }
-
-        .btn-nav:active:not(:disabled) {
-            transform: scale(0.98);
-        }
-
-        .btn-nav:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none;
-        }
-
-        .step-counter {
-            color: #7f8c8d;
-            font-weight: 700;
-            font-size: 0.95rem;
-            padding: 8px 16px;
-            background: #f8f9fa;
-            border-radius: 20px;
-            white-space: nowrap;
-        }
-
-        .step-counter .current-step {
-            color: var(--primary-color);
-            font-size: 1.1rem;
+            transition: width 0.3s ease;
         }
 
         .form-header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem 0;
+            margin-bottom: 2rem;
         }
 
         .form-header h1 {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .form-header h1 i {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
         }
 
         .form-header p {
-            color: #5a6c7d;
+            color: #666;
             font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .back-link {
@@ -585,15 +178,13 @@
         }
 
         .spinner {
-            border: 4px solid rgba(220, 53, 69, 0.1);
-            border-top: 4px solid var(--primary-color);
-            border-right: 4px solid #ff6b6b;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--primary-color);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 0.8s linear infinite;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
             margin: 0 auto;
-            box-shadow: 0 0 15px rgba(220, 53, 69, 0.2);
         }
 
         @keyframes spin {
@@ -601,182 +192,99 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading p {
-            margin-top: 0.75rem;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
         /* Slider Styles */
         .slider-container {
-            margin-top: 1.5rem;
-            padding: 1.5rem;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-radius: 12px;
-            border: 2px solid #e8ecef;
+            margin-top: 1rem;
         }
 
         .slider-container input[type="range"] {
             width: 100%;
-            height: 8px;
-            border-radius: 10px;
-            background: #e8ecef;
+            height: 6px;
+            border-radius: 3px;
+            background: #e1e5e9;
             outline: none;
-            appearance: none;
             -webkit-appearance: none;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
         }
 
         .slider-container input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            cursor: grab;
-            border: 3px solid white;
-            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3), 0 1px 3px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-        }
-
-        .slider-container input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4), 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .slider-container input[type="range"]::-webkit-slider-thumb:active {
-            cursor: grabbing;
-            transform: scale(1.05);
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .slider-container input[type="range"]::-moz-range-thumb {
-            width: 24px;
-            height: 24px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            cursor: grab;
-            border: 3px solid white;
-            box-shadow: 0 3px 8px rgba(220, 53, 69, 0.3), 0 1px 3px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-        }
-
-        .slider-container input[type="range"]::-moz-range-thumb:hover {
-            transform: scale(1.15);
-        }
-
-        .slider-container input[type="range"]::-moz-range-thumb:active {
-            cursor: grabbing;
-            transform: scale(1.05);
+            background: var(--primary-color);
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .slider-labels {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: #7f8c8d;
-            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            color: #666;
         }
 
         .slider-labels span {
             flex: 1;
             text-align: center;
-            padding: 4px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .slider-labels span:hover {
-            background: rgba(220, 53, 69, 0.05);
-            color: var(--primary-color);
         }
 
         .slider-description {
             text-align: center;
-            color: #5a6c7d;
+            color: #666;
             font-style: italic;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
         }
 
         /* Screen Time Instructions */
         .screen-time-instructions {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border: 2px solid #2196f3;
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 8px;
+            padding: 1rem;
             margin: 1rem 0;
-            box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
         }
 
         .screen-time-instructions p {
             margin: 0.5rem 0;
-            color: #0d47a1;
-            font-weight: 500;
+            color: #1565c0;
         }
 
         .screen-time-instructions ul {
-            margin: 0.75rem 0;
+            margin: 0.5rem 0;
             padding-left: 1.5rem;
         }
 
         .screen-time-instructions li {
-            margin: 0.5rem 0;
+            margin: 0.25rem 0;
             color: #1565c0;
-            font-weight: 500;
         }
 
         .screen-time-instructions strong {
             color: #0d47a1;
-            font-weight: 700;
-        }
-
-        .screen-time-instructions small {
-            color: #1976d2;
         }
 
         /* Data Policy Styles */
         .data-policy-content {
-            margin-bottom: 1.5rem;
-            padding: 1rem;
-            background: white;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary-color);
+            margin-bottom: 1rem;
         }
 
         .data-policy-content p {
-            margin-bottom: 0.85rem;
-            color: #2c3e50;
-            line-height: 1.7;
-            font-weight: 500;
-        }
-
-        .data-policy-content a {
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .data-policy-content a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .data-policy-content a:hover::after {
-            width: 100%;
-        }
-
-        .data-policy-content a:hover {
-            color: #c82333;
+            margin-bottom: 0.75rem;
+            color: #555;
+            line-height: 1.5;
         }
 
         .checkbox-group {
@@ -786,18 +294,11 @@
         .checkbox-label {
             display: flex;
             align-items: flex-start;
-            gap: 14px;
+            gap: 12px;
             cursor: pointer;
             font-weight: 500;
-            color: #2c3e50;
-            line-height: 1.6;
-            padding: 12px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox-label:hover {
-            background: rgba(220, 53, 69, 0.03);
+            color: #333;
+            line-height: 1.4;
         }
 
         .checkbox-label input[type="checkbox"] {
@@ -805,23 +306,20 @@
         }
 
         .checkmark {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #e8ecef;
-            border-radius: 6px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e1e5e9;
+            border-radius: 4px;
             background: white;
             flex-shrink: 0;
             margin-top: 2px;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .checkbox-label input[type="checkbox"]:checked + .checkmark {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #ff6b6b 100%);
-            border-color: transparent;
-            transform: scale(1.1);
-            box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
         }
 
         .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
@@ -829,29 +327,15 @@
             font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             color: white;
-            font-size: 14px;
+            font-size: 12px;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            animation: checkPop 0.3s ease;
-        }
-
-        @keyframes checkPop {
-            0% {
-                transform: translate(-50%, -50%) scale(0);
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-            }
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-            }
         }
 
         .checkbox-label:hover .checkmark {
             border-color: var(--primary-color);
-            transform: scale(1.05);
         }
 
         .checkbox-label.required::after {
@@ -903,185 +387,18 @@
             }
         }
 
-        /* Floating Particles */
-        .floating-particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: rgba(220, 53, 69, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .particle:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-            animation-duration: 8s;
-        }
-
-        .particle:nth-child(2) {
-            top: 60%;
-            left: 20%;
-            animation-delay: 2s;
-            animation-duration: 6s;
-        }
-
-        .particle:nth-child(3) {
-            top: 40%;
-            left: 80%;
-            animation-delay: 4s;
-            animation-duration: 7s;
-        }
-
-        .particle:nth-child(4) {
-            top: 80%;
-            left: 70%;
-            animation-delay: 1s;
-            animation-duration: 9s;
-        }
-
-        .particle:nth-child(5) {
-            top: 30%;
-            left: 50%;
-            animation-delay: 3s;
-            animation-duration: 5s;
-        }
-
-        .particle:nth-child(6) {
-            top: 70%;
-            left: 30%;
-            animation-delay: 5s;
-            animation-duration: 8s;
-        }
-
-        .particle:nth-child(7) {
-            top: 10%;
-            left: 90%;
-            animation-delay: 2.5s;
-            animation-duration: 6.5s;
-        }
-
-        .particle:nth-child(8) {
-            top: 50%;
-            left: 5%;
-            animation-delay: 4.5s;
-            animation-duration: 7.5s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0px) translateX(0px);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translateY(-20px) translateX(10px);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translateY(-40px) translateX(-10px);
-                opacity: 0.4;
-            }
-            75% {
-                transform: translateY(-20px) translateX(15px);
-                opacity: 0.8;
-            }
-        }
-
-        .form-container {
-            position: relative;
-            z-index: 2;
-        }
-
         @media (max-width: 768px) {
             .form-container {
-                padding: 1.5rem;
+                padding: 1rem;
                 margin: 1rem;
-                border-radius: 16px;
-            }
-
-            .form-container::before {
-                height: 3px;
             }
             
             .form-section {
-                padding: 1.5rem;
-            }
-
-            .form-header h1 {
-                font-size: 1.75rem;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .form-header p {
-                font-size: 1rem;
+                padding: 1rem;
             }
 
             .slider-labels {
                 font-size: 0.7rem;
-            }
-
-            .step-indicator {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding: 0 15px 15px 15px;
-                -webkit-overflow-scrolling: touch;
-                margin-bottom: 2rem;
-            }
-
-            .step-item {
-                min-width: 70px;
-            }
-
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-
-            .step-label {
-                font-size: 0.7rem;
-                max-width: 85px;
-            }
-
-            .form-navigation {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .btn-nav {
-                width: 100%;
-                justify-content: center;
-                padding: 12px 24px;
-            }
-
-            .btn-submit {
-                width: 100%;
-                padding: 14px 32px;
-                font-size: 16px;
-            }
-
-            .step-counter {
-                order: -1;
-                margin-bottom: 12px;
-                font-size: 0.9rem;
-            }
-
-            .form-group input,
-            .form-group select,
-            .form-group textarea {
-                padding: 12px 14px;
             }
         }
     </style>
@@ -1112,18 +429,7 @@
     </header>
 
     <!-- Main Content -->
-    <main style="padding-top: 80px; min-height: 100vh; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); position: relative; overflow: hidden;">
-        <!-- Floating particles background -->
-        <div class="floating-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
+    <main style="padding-top: 80px; min-height: 100vh; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
         <div class="container">
             <a href="index.html" class="back-link">
                 <i class="fas fa-arrow-left"></i>
@@ -1136,59 +442,23 @@
                     <p>Completa este formulario para recibir una evaluación personalizada de tu estilo de vida y recomendaciones específicas</p>
                 </div>
 
-                <!-- Step Indicator -->
-                <div class="step-indicator" id="stepIndicator">
-                    <div class="step-item active" data-step="1">
-                        <div class="step-number">1</div>
-                        <div class="step-label">Datos Básicos</div>
-                    </div>
-                    <div class="step-item" data-step="2">
-                        <div class="step-number">2</div>
-                        <div class="step-label">Nutrición</div>
-                    </div>
-                    <div class="step-item" data-step="3">
-                        <div class="step-number">3</div>
-                        <div class="step-label">Sueño</div>
-                    </div>
-                    <div class="step-item" data-step="4">
-                        <div class="step-number">4</div>
-                        <div class="step-label">Actividad Física</div>
-                    </div>
-                    <div class="step-item" data-step="5">
-                        <div class="step-number">5</div>
-                        <div class="step-label">Estrés</div>
-                    </div>
-                    <div class="step-item" data-step="6">
-                        <div class="step-number">6</div>
-                        <div class="step-label">Bienestar</div>
-                    </div>
-                    <div class="step-item" data-step="7">
-                        <div class="step-number">7</div>
-                        <div class="step-label">Hábitos</div>
-                    </div>
-                    <div class="step-item" data-step="8">
-                        <div class="step-number">8</div>
-                        <div class="step-label">Política</div>
-                    </div>
-                </div>
-
                 <div class="progress-bar">
                     <div class="progress-fill" id="progressFill"></div>
                 </div>
 
-                <div class="alert alert-success show" id="successAlert" style="display: none;">
+                <div class="alert alert-success" id="successAlert">
                     <i class="fas fa-check-circle"></i>
                     ¡Formulario enviado exitosamente! Te contactaremos pronto con tu evaluación personalizada.
                 </div>
 
-                <div class="alert alert-error show" id="errorAlert" style="display: none;">
+                <div class="alert alert-error" id="errorAlert">
                     <i class="fas fa-exclamation-circle"></i>
                     <span id="errorMessage">Ha ocurrido un error. Por favor, intenta nuevamente.</span>
                 </div>
 
                 <form id="assessmentForm">
                     <!-- Datos básicos -->
-                    <div class="form-section active" data-step="1">
+                    <div class="form-section">
                         <h3><i class="fas fa-user"></i> Datos Básicos</h3>
                         
                         <div class="form-group required">
@@ -1258,21 +528,10 @@
                                 <option value="Mejorar autoestima">Mejorar autoestima</option>
                             </select>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev" disabled>
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">1</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Nutrición -->
-                    <div class="form-section" data-step="2">
+                    <div class="form-section">
                         <h3><i class="fas fa-apple-alt"></i> Nutrición</h3>
                         
                         <div class="form-group required">
@@ -1354,21 +613,10 @@
                                 <option value="En ocasiones especiales">En ocasiones especiales</option>
                             </select>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">2</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Sueño y descanso -->
-                    <div class="form-section" data-step="3">
+                    <div class="form-section">
                         <h3><i class="fas fa-bed"></i> Sueño y Descanso</h3>
                         
                         <div class="form-group required">
@@ -1401,21 +649,10 @@
                                 <option value="A veces">A veces</option>
                             </select>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">3</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Actividad física -->
-                    <div class="form-section" data-step="4">
+                    <div class="form-section">
                         <h3><i class="fas fa-dumbbell"></i> Actividad Física</h3>
                         
                         <div class="form-group required">
@@ -1452,21 +689,10 @@
                                 <option value="Más de 3 veces por semana">Más de 3 veces por semana</option>
                             </select>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">4</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Gestión del estrés -->
-                    <div class="form-section" data-step="5">
+                    <div class="form-section">
                         <h3><i class="fas fa-brain"></i> Gestión del Estrés</h3>
                         
                         <div class="form-group required">
@@ -1490,21 +716,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">5</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Bienestar, hábitos, emociones -->
-                    <div class="form-section" data-step="6">
+                    <div class="form-section">
                         <h3><i class="fas fa-heart"></i> Bienestar, Hábitos y Emociones</h3>
                         
                         <div class="form-group required">
@@ -1572,21 +787,10 @@
                                 <option value="No estoy seguro(a)">No estoy seguro(a)</option>
                             </select>
                         </div>
-
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">6</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
-                        </div>
                     </div>
 
                     <!-- Hábitos de consumo -->
-                    <div class="form-section" data-step="7">
+                    <div class="form-section">
                         <h3><i class="fas fa-smoking-ban"></i> Hábitos de Consumo</h3>
                         
                         <div class="form-group required">
@@ -1609,21 +813,32 @@
                                 <option value="Prefiero no responder">Prefiero no responder</option>
                             </select>
                         </div>
+                    </div>
 
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">7</span> de <span class="total-steps">8</span></span>
-                            <button type="button" class="btn-nav btn-next">
-                                Siguiente <i class="fas fa-arrow-right"></i>
-                            </button>
+                    <!-- Correo del Profesor -->
+                    <div class="form-section" style="background: #e8f5e8; border: 2px solid #28a745;">
+                        <h3><i class="fas fa-envelope"></i> Correo del Profesor</h3>
+                        
+                        <div class="form-group required">
+                            <label for="correo_profe">Correo electrónico del profesor</label>
+                            <input type="email" id="correo_profe" name="correo_profe" placeholder="ejemplo@correo.com" required>
+                            <small style="color: #155724; font-style: italic;">Este correo será usado para el seguimiento de la valoración</small>
+                        </div>
+                    </div>
+
+                    <!-- Código de Acceso -->
+                    <div class="form-section" style="background: #fff3cd; border: 2px solid #ffc107;">
+                        <h3><i class="fas fa-key"></i> Código de Acceso</h3>
+                        
+                        <div class="form-group required">
+                            <label for="codigo_acceso">Código de acceso</label>
+                            <input type="text" id="codigo_acceso" name="codigo_acceso" placeholder="Ingresa tu código de acceso" required>
+                            <small style="color: #856404; font-style: italic;">Este código es necesario para procesar tu valoración</small>
                         </div>
                     </div>
 
                     <!-- Política de Datos Personales -->
-                    <div class="form-section" data-step="8" style="background: #f8f9fa; border: 2px solid #e1e5e9;">
+                    <div class="form-section" style="background: #f8f9fa; border: 2px solid #e1e5e9;">
                         <h3><i class="fas fa-shield-alt"></i> Política de Tratamiento de Datos Personales</h3>
                         <div class="data-policy-content">
                             <p>Los datos suministrados serán tratados conforme a nuestra <a href="politica-datos.html" target="_blank" style="color: var(--primary-color); font-weight: 600;">Política de Tratamiento de Datos Personales</a>.</p>
@@ -1638,24 +853,17 @@
                                 Acepto la política de tratamiento de datos personales y autorizo el uso de mi información para los fines descritos.
                             </label>
                         </div>
+                    </div>
 
-                        <!-- Navigation -->
-                        <div class="form-navigation">
-                            <button type="button" class="btn-nav btn-prev">
-                                <i class="fas fa-arrow-left"></i> Anterior
-                            </button>
-                            <span class="step-counter">Paso <span class="current-step">8</span> de <span class="total-steps">8</span></span>
-                            <div style="position: relative;">
-                                <div class="loading" id="loading" style="position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 200px;">
-                                    <div class="spinner"></div>
-                                    <p style="font-size: 14px; margin-top: 8px;">Enviando...</p>
-                                </div>
-                                <button type="submit" class="btn-submit" id="submitBtn" disabled>
-                                    <i class="fas fa-paper-plane"></i>
-                                    Enviar Valoración
-                                </button>
-                            </div>
+                    <div class="form-submit">
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Enviando formulario...</p>
                         </div>
+                        <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Valoración
+                        </button>
                     </div>
                 </form>
             </div>
@@ -1726,118 +934,12 @@
         const errorAlert = document.getElementById('errorAlert');
         const errorMessage = document.getElementById('errorMessage');
         const progressFill = document.getElementById('progressFill');
+
+        // Declarar submitBtn solo una vez
         const submitBtn = document.getElementById('submitBtn');
 
         // Webhook URL
         const WEBHOOK_URL = 'https://olympo-n8n.bsnk1a.easypanel.host/webhook/estilo-de-vida';
-
-        // Step Wizard Logic
-        let currentStep = 1;
-        const totalSteps = 8;
-        const formSections = document.querySelectorAll('.form-section');
-        const stepItems = document.querySelectorAll('.step-item');
-
-        // Update step display
-        function updateStepDisplay() {
-            // Update sections visibility
-            formSections.forEach((section, index) => {
-                section.classList.remove('active');
-                if (parseInt(section.dataset.step) === currentStep) {
-                    section.classList.add('active');
-                }
-            });
-
-            // Update step indicators
-            stepItems.forEach((item, index) => {
-                const stepNumber = parseInt(item.dataset.step);
-                item.classList.remove('active', 'completed');
-                
-                if (stepNumber === currentStep) {
-                    item.classList.add('active');
-                } else if (stepNumber < currentStep) {
-                    item.classList.add('completed');
-                }
-            });
-
-            // Scroll to top smoothly
-            const formContainer = document.querySelector('.form-container');
-            if (formContainer) {
-                formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            // Update step counter in all navigation sections
-            document.querySelectorAll('.current-step').forEach(el => {
-                el.textContent = currentStep;
-            });
-
-            updateProgress();
-        }
-
-        // Validate current step
-        function validateCurrentStep() {
-            const currentSection = document.querySelector(`.form-section[data-step="${currentStep}"]`);
-            if (!currentSection) return true;
-
-            const requiredFields = currentSection.querySelectorAll('[required]');
-            let isValid = true;
-
-            requiredFields.forEach(field => {
-                if (field.type === 'checkbox') {
-                    if (!field.checked) {
-                        isValid = false;
-                        field.parentElement.style.border = '2px solid #dc3545';
-                        setTimeout(() => {
-                            field.parentElement.style.border = '';
-                        }, 2000);
-                    }
-                } else {
-                    if (!field.value.trim()) {
-                        isValid = false;
-                        field.style.borderColor = '#dc3545';
-                        setTimeout(() => {
-                            field.style.borderColor = '';
-                        }, 2000);
-                    }
-                }
-            });
-
-            if (!isValid) {
-                // Show error message
-                const tempAlert = document.createElement('div');
-                tempAlert.className = 'alert alert-error';
-                tempAlert.style.display = 'block';
-                tempAlert.innerHTML = '<i class="fas fa-exclamation-circle"></i> Por favor, completa todos los campos requeridos antes de continuar.';
-                currentSection.insertBefore(tempAlert, currentSection.firstChild);
-                
-                setTimeout(() => {
-                    tempAlert.remove();
-                }, 3000);
-
-                currentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            return isValid;
-        }
-
-        // Handle next button clicks
-        document.querySelectorAll('.btn-next').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (validateCurrentStep() && currentStep < totalSteps) {
-                    currentStep++;
-                    updateStepDisplay();
-                }
-            });
-        });
-
-        // Handle prev button clicks
-        document.querySelectorAll('.btn-prev').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (currentStep > 1) {
-                    currentStep--;
-                    updateStepDisplay();
-                }
-            });
-        });
 
         // Update progress bar
         function updateProgress() {
@@ -1888,35 +990,33 @@
             submitBtn.disabled = !politicaCheckbox.checked;
         }
 
+
+        // Validación de códigos
+        const CODIGOS_VALIDOS = {
+            'aura': 'profe 1',
+            'pika': 'profe 2', 
+            'clip': 'profe 3',
+            'romboide': 'profe 4',
+            'viga': 'profe 5',
+            'test': 'general'
+        };
+
         // Form submission
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // Validate all steps
-            let allValid = true;
-            for (let step = 1; step <= totalSteps; step++) {
-                const section = document.querySelector(`.form-section[data-step="${step}"]`);
-                const requiredFields = section.querySelectorAll('[required]');
-                
-                requiredFields.forEach(field => {
-                    if (field.type === 'checkbox') {
-                        if (!field.checked) allValid = false;
-                    } else {
-                        if (!field.value.trim()) allValid = false;
-                    }
-                });
-            }
+            // Hide previous alerts
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
 
-            if (!allValid) {
-                errorMessage.textContent = 'Por favor, completa todos los campos requeridos en todos los pasos.';
+            // Validar código de acceso
+            const codigoAcceso = document.getElementById('codigo_acceso').value.trim().toLowerCase();
+            if (!CODIGOS_VALIDOS[codigoAcceso]) {
+                errorMessage.textContent = 'Código de acceso inválido. Por favor, verifica el código e intenta nuevamente.';
                 errorAlert.style.display = 'block';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return;
             }
-
-            // Hide previous alerts
-            successAlert.style.display = 'none';
-            errorAlert.style.display = 'none';
 
             // Show loading
             submitBtn.disabled = true;
@@ -1931,6 +1031,9 @@
                 for (let [key, value] of formData.entries()) {
                     jsonData[key] = value;
                 }
+
+                // Agregar el tipo de profesor según el código
+                jsonData.tipo_profesor = CODIGOS_VALIDOS[codigoAcceso];
 
                 // Combinar código de país (de la lista o personalizado) con el teléfono, sin + ni espacio
                 let codigoPaisFinal = formData.get('codigo_pais');
@@ -1961,8 +1064,6 @@
                     successAlert.style.display = 'block';
                     form.reset();
                     progressFill.style.width = '0%';
-                    currentStep = 1;
-                    updateStepDisplay();
                     
                     // Scroll to top to show success message
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1979,13 +1080,12 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } finally {
                 // Hide loading
-                submitBtn.disabled = !politicaCheckbox.checked;
+                submitBtn.disabled = false;
                 loading.style.display = 'none';
             }
         });
 
-        // Initialize
-        updateStepDisplay();
+        // Initialize progress bar
         updateProgress();
     </script>
 </body>
