@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡1 Semana GRATIS en Pimpos Gym! - Oferta Limitada</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="images/favicon-main.png">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 50%, #1565c0 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .optin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .optin-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+            position: relative;
+        }
+
+        .optin-left {
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            color: white;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .optin-left::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .optin-right {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .optin-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .optin-logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .optin-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .optin-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .optin-benefits {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .optin-benefits li {
+            padding: 0.8rem 0;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .optin-benefits i {
+            font-size: 1.3rem;
+            color: #ffd700;
+        }
+
+        .optin-form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1565c0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e8ecef;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #1565c0;
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+        }
+
+        .btn-claim {
+            width: 100%;
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .btn-claim::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-claim:hover::before {
+            left: 100%;
+        }
+
+        .btn-claim:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+        }
+
+        .btn-claim:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .urgency-badge {
+            background: #ffd700;
+            color: #1565c0;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+            animation: slideDown 0.4s ease;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .spinner {
+            border: 3px solid rgba(21, 101, 192, 0.1);
+            border-top: 3px solid #1565c0;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .back-link:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .optin-card {
+                grid-template-columns: 1fr;
+                margin: 1rem;
+            }
+
+            .optin-left,
+            .optin-right {
+                padding: 2rem;
+            }
+
+            .optin-title {
+                font-size: 2rem;
+            }
+
+            .optin-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 1rem;
+                color: #1565c0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Volver al sitio principal
+    </a>
+
+    <div class="optin-container">
+        <div class="optin-card">
+            <!-- Left Side - Benefits -->
+            <div class="optin-left">
+                <div class="optin-logo">
+                    <img src="images/natvar-logo.png" alt="Pimpos Gym Logo">
+                </div>
+                
+                <h1 class="optin-title">
+                    ¡1 SEMANA<br>
+                    COMPLETAMENTE<br>
+                    <span style="color: #ffd700;">GRATIS!</span>
+                </h1>
+                
+                <p class="optin-subtitle">
+                    Descubre por qué más de 300 personas eligen Pimpos Gym para transformar su vida
+                </p>
+
+                <ul class="optin-benefits">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Acceso completo a todas las instalaciones
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Clases de Rumba, Functional y Ritmos Latinos
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Horarios extendidos (5:00 AM - 9:20 PM)
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Ubicación estratégica en el centro
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        Más de 10 años de experiencia
+                    </li>
+                </ul>
+
+                <div class="testimonial">
+                    <p>"Pimpos Gym cambió mi vida completamente. El ambiente es increíble y los resultados se notan desde la primera semana."</p>
+                    <div class="testimonial-author">- María González, Miembro desde 2022</div>
+                </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="optin-right">
+                <div class="urgency-badge">
+                    ⚡ OFERTA LIMITADA - Solo por tiempo limitado
+                </div>
+
+                <div class="optin-form">
+                    <h2 class="form-title">¡Reclama tu Semana Gratis!</h2>
+                    
+                    <div class="alert alert-success" id="successAlert">
+                        <i class="fas fa-check-circle"></i>
+                        ¡Excelente! Te hemos enviado los detalles de tu semana gratis por email.
+                    </div>
+
+                    <div class="alert alert-error" id="errorAlert">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorMessage">Ha ocurrido un error. Por favor, intenta nuevamente.</span>
+                    </div>
+
+                    <form id="optinForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefono">Teléfono (opcional)</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567">
+                        </div>
+
+                        <button type="submit" class="btn-claim" id="claimBtn">
+                            <i class="fas fa-gift"></i>
+                            ¡QUIERO MI SEMANA GRATIS!
+                        </button>
+
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Procesando tu solicitud...</p>
+                        </div>
+                    </form>
+
+                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                        Al registrarte, aceptas recibir información sobre promociones y servicios de Pimpos Gym.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Webhook URL - NECESITAS PROPORCIONAR ESTA URL
+        const WEBHOOK_URL = 'https://tu-webhook-url-aqui.com/webhook/optin-semana-gratis';
+
+        const form = document.getElementById('optinForm');
+        const loading = document.getElementById('loading');
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+        const errorMessage = document.getElementById('errorMessage');
+        const claimBtn = document.getElementById('claimBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Hide previous alerts
+            successAlert.style.display = 'none';
+            errorAlert.style.display = 'none';
+
+            // Show loading
+            claimBtn.disabled = true;
+            loading.style.display = 'block';
+
+            try {
+                // Collect form data
+                const formData = new FormData(form);
+                const jsonData = {};
+
+                // Convert FormData to JSON object
+                for (let [key, value] of formData.entries()) {
+                    jsonData[key] = value;
+                }
+
+                // Add timestamp and source
+                jsonData.timestamp = new Date().toISOString();
+                jsonData.source = 'optin-semana-gratis';
+                jsonData.promocion = '1 semana gratis';
+
+                // Send to webhook
+                const response = await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(jsonData)
+                });
+
+                if (response.ok) {
+                    // Success
+                    successAlert.style.display = 'block';
+                    form.reset();
+                    
+                    // Scroll to success message
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.textContent = 'Ha ocurrido un error al procesar tu solicitud. Por favor, intenta nuevamente.';
+                errorAlert.style.display = 'block';
+                
+                // Scroll to error message
+                errorAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } finally {
+                // Hide loading
+                claimBtn.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.form-group input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
