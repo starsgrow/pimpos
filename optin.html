@@ -376,8 +376,8 @@
                 </ul>
 
                 <div class="testimonial">
-                    <p>"Pimpos Gym cambió mi vida completamente. El ambiente es increíble y los resultados se notan desde la primera semana."</p>
-                    <div class="testimonial-author">- María González, Miembro desde 2022</div>
+                    <p>"Excelente gimnasio, las máquinas son muy buenas y los instructores pendientes del progreso individual. He mejorado mucho"</p>
+                    <div class="testimonial-author">- Jasmin Ramirez, Miembro desde 2023</div>
                 </div>
             </div>
 
@@ -412,8 +412,26 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="telefono">Teléfono (opcional)</label>
-                            <input type="tel" id="telefono" name="telefono" placeholder="+57 300 123 4567">
+                            <label for="telefono">Teléfono <span style="color: red;">*</span></label>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <select id="codigo-pais" name="codigo-pais" required style="width: 120px; padding: 15px; border: 2px solid #e8ecef; border-radius: 10px; font-size: 16px; background: white;">
+                                    <option value="+57">🇨🇴 +57</option>
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+52">🇲🇽 +52</option>
+                                    <option value="+54">🇦🇷 +54</option>
+                                    <option value="+56">🇨🇱 +56</option>
+                                    <option value="+51">🇵🇪 +51</option>
+                                    <option value="+58">🇻🇪 +58</option>
+                                    <option value="+593">🇪🇨 +593</option>
+                                    <option value="+591">🇧🇴 +591</option>
+                                    <option value="+598">🇺🇾 +598</option>
+                                    <option value="+595">🇵🇾 +595</option>
+                                </select>
+                                <input type="tel" id="telefono" name="telefono" required placeholder="300 123 4567" style="flex: 1;">
+                            </div>
+                            <small style="color: red; font-size: 0.9rem; margin-top: 0.5rem; display: block;">
+                                <i class="fas fa-exclamation-triangle"></i> Aquí haremos llegar tu invitación
+                            </small>
                         </div>
 
                         <button type="submit" class="btn-claim" id="claimBtn">
@@ -437,7 +455,7 @@
 
     <script>
         // Webhook URL - NECESITAS PROPORCIONAR ESTA URL
-        const WEBHOOK_URL = 'https://tu-webhook-url-aqui.com/webhook/optin-semana-gratis';
+        const WEBHOOK_URL = 'https://olympo-n8n.bsnk1a.easypanel.host/webhook-test/20e17714-9ab5-4975-b5a4-774b1de66af5';
 
         const form = document.getElementById('optinForm');
         const loading = document.getElementById('loading');
@@ -466,6 +484,11 @@
                 for (let [key, value] of formData.entries()) {
                     jsonData[key] = value;
                 }
+
+                // Combine country code and phone number
+                const codigoPais = formData.get('codigo-pais');
+                const telefono = formData.get('telefono');
+                jsonData.telefono_completo = `${codigoPais} ${telefono}`;
 
                 // Add timestamp and source
                 jsonData.timestamp = new Date().toISOString();
