@@ -1,0 +1,368 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Operativo Gym</title>
+    <!-- Usamos FontAwesome para los iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e50914;
+            --primary-dark: #b20710;
+            --bg: #141414;
+            --card: #1f1f1f;
+            --text: #ffffff;
+            --text-secondary: #b3b3b3;
+            --input-bg: #2b2b2b;
+            --success: #46d369;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: var(--card);
+            width: 100%;
+            max-width: 450px;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        h1 span { color: var(--primary); }
+
+        p.subtitle {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--input-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--input-bg);
+            border: 2px dashed #444;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary);
+            background-color: #252525;
+        }
+
+        .file-upload-label input {
+            display: none;
+        }
+
+        .icon-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon-box i {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .file-status {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            background: #111;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .file-status.uploaded {
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: transform 0.2s, background-color 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button.submit-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        button.submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        button.submit-btn:disabled {
+            background-color: #444;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        #notification {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .notif-success { background-color: rgba(70,211,105,0.2); color: var(--success); border: 1px solid var(--success); }
+        .notif-error { background-color: rgba(229,9,20,0.2); color: var(--primary); border: 1px solid var(--primary); }
+
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 3px solid white;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Gym<span>Control</span></h1>
+        <p class="subtitle">Reporte de Orden y Limpieza</p>
+    </header>
+
+    <form id="gymForm">
+        
+        <div class="form-group">
+            <label for="colaborador">Colaborador</label>
+            <input type="text" id="colaborador" name="colaborador" placeholder="Tu nombre completo" required>
+        </div>
+
+        <div class="form-group">
+            <label>Zona de Pesas / General</label>
+            <div class="file-upload-wrapper">
+                <label class="file-upload-label">
+                    <div class="icon-box">
+                        <i class="fas fa-dumbbell"></i>
+                        <span>Subir Foto 1</span>
+                    </div>
+                    <span class="file-status" id="status1">Sin archivo</span>
+                    <input type="file" name="foto1" accept="image/*" required onchange="updateStatus(this, 'status1')">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Zona Cardio / Recepción</label>
+            <div class="file-upload-wrapper">
+                <label class="file-upload-label">
+                    <div class="icon-box">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Subir Foto 2</span>
+                    </div>
+                    <span class="file-status" id="status2">Sin archivo</span>
+                    <input type="file" name="foto2" accept="image/*" required onchange="updateStatus(this, 'status2')">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Baños / Vestidores</label>
+            <div class="file-upload-wrapper">
+                <label class="file-upload-label">
+                    <div class="icon-box">
+                        <i class="fas fa-shower"></i>
+                        <span>Subir Foto 3</span>
+                    </div>
+                    <span class="file-status" id="status3">Sin archivo</span>
+                    <input type="file" name="foto3" accept="image/*" required onchange="updateStatus(this, 'status3')">
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="observaciones">Observaciones (Opcional)</label>
+            <textarea id="observaciones" name="observaciones" rows="3" placeholder="Ej. Máquina de remo en mantenimiento..."></textarea>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn">
+            <span>Enviar Reporte</span>
+            <div class="spinner" id="loadingSpinner"></div>
+        </button>
+
+        <div id="notification"></div>
+
+    </form>
+</div>
+
+<script>
+    const WEBHOOK_URL = 'https://olympo-n8n.bsnk1a.easypanel.host/webhook-test/imagenes';
+
+    function updateStatus(input, spanId) {
+        const span = document.getElementById(spanId);
+        if (input.files && input.files.length > 0) {
+            let fileName = input.files[0].name;
+            if(fileName.length > 15) fileName = fileName.substring(0, 12) + '...';
+            
+            span.textContent = '✅ ' + fileName;
+            span.classList.add('uploaded');
+        } else {
+            span.textContent = "Sin archivo";
+            span.classList.remove('uploaded');
+        }
+    }
+
+    document.getElementById('gymForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('loadingSpinner');
+        const btnText = btn.querySelector('span');
+        const notification = document.getElementById('notification');
+        
+        btn.disabled = true;
+        btnText.textContent = "Enviando...";
+        spinner.style.display = "block";
+        notification.style.display = "none";
+
+        const formData = new FormData();
+
+        // Datos normales
+        formData.append('colaborador', document.getElementById('colaborador').value);
+        formData.append('observaciones', document.getElementById('observaciones').value);
+
+        // Renombrar todos los archivos como "data"
+        const fileInputs = ["foto1", "foto2", "foto3"]; 
+        fileInputs.forEach(id => {
+            const file = document.querySelector(`input[name="${id}"]`).files[0];
+            if (file) {
+                const ext = file.name.substring(file.name.lastIndexOf('.'));
+                const renamedFile = new File([file], "data" + ext, { type: file.type });
+                formData.append(id, renamedFile);
+            }
+        });
+
+        try {
+            const response = await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                showNotification("¡Reporte enviado correctamente! 💪", "success");
+                resetForm();
+            } else {
+                throw new Error("Error en la respuesta del servidor");
+            }
+
+        } catch (error) {
+            console.error(error);
+            showNotification("Enviado. Verifica si llegó aunque salga este aviso", "success");
+        } finally {
+            btn.disabled = false;
+            btnText.textContent = "Enviar Reporte";
+            spinner.style.display = "none";
+        }
+    });
+
+    function showNotification(msg, type) {
+        const notif = document.getElementById('notification');
+        notif.textContent = msg;
+        notif.className = type === 'success' ? 'notif-success' : 'notif-error';
+        notif.style.display = 'block';
+    }
+
+    function resetForm() {
+        document.getElementById('gymForm').reset();
+        document.querySelectorAll('.file-status').forEach(span => {
+            span.textContent = "Sin archivo";
+            span.classList.remove('uploaded');
+        });
+    }
+</script>
+
+</body>
+</html>
