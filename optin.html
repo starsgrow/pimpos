@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡1 Semana GRATIS en Pimpos Gym! - Oferta Limitada</title>
+    <title>¡3 Días GRATIS en Pimpos Gym! - Oferta Limitada</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="images/favicon-main.png">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'DM Sans', 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 50%, #1565c0 100%);
+            background: linear-gradient(-45deg, #0d47a1, #1565c0, #1976d2, #42a5f5);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .optin-container {
@@ -29,18 +37,23 @@
         }
 
         .optin-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: linear-gradient(165deg, #ffffff 0%, #fafbff 100%);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.2), 0 0 0 1px rgba(255,255,255,0.8) inset;
             overflow: hidden;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 600px;
             position: relative;
+            animation: cardFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
 
         .optin-left {
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            background: linear-gradient(160deg, #0d47a1 0%, #1565c0 40%, #1976d2 100%);
             color: white;
             padding: 3rem;
             display: flex;
@@ -48,6 +61,12 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            animation: leftFadeIn 0.7s ease;
+        }
+
+        @keyframes leftFadeIn {
+            from { opacity: 0; transform: translateX(-15px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .optin-left::before {
@@ -57,8 +76,19 @@
             right: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 55%);
             animation: float 6s ease-in-out infinite;
+        }
+
+        .optin-left::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -20%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(ellipse, rgba(255,215,0,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -67,10 +97,51 @@
         }
 
         .optin-right {
-            padding: 3rem;
+            padding: 2rem 2.5rem;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 35%, #ffffff 100%);
+            position: relative;
+        }
+
+        .optin-right::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.15), transparent);
+        }
+
+        .optin-right {
+            animation: rightFadeIn 0.7s ease 0.15s both;
+        }
+
+        @keyframes rightFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .optin-right-footer {
+            margin-top: auto;
+            padding-top: 1.25rem;
+            border-top: 1px solid #e8ecef;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+        }
+
+        .optin-right-footer p {
+            margin: 0.4rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .optin-right-footer i {
+            color: #1565c0;
+            width: 1.1rem;
         }
 
         .optin-logo {
@@ -84,56 +155,78 @@
         }
 
         .optin-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .optin-title span {
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
         }
 
         .optin-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
             font-weight: 400;
+            line-height: 1.4;
         }
 
         .optin-benefits {
             list-style: none;
             padding: 0;
-            margin-bottom: 2rem;
+            margin: 0 0 1.5rem 0;
         }
 
         .optin-benefits li {
-            padding: 0.8rem 0;
+            padding: 0.6rem 0;
             font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
+            opacity: 0;
+            animation: benefitFadeIn 0.5s ease forwards;
+        }
+
+        .optin-benefits li:nth-child(1) { animation-delay: 0.1s; }
+        .optin-benefits li:nth-child(2) { animation-delay: 0.2s; }
+        .optin-benefits li:nth-child(3) { animation-delay: 0.3s; }
+        .optin-benefits li:nth-child(4) { animation-delay: 0.4s; }
+        .optin-benefits li:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes benefitFadeIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .optin-benefits i {
             font-size: 1.3rem;
             color: #ffd700;
+            filter: drop-shadow(0 1px 2px rgba(0,0,0,0.2));
         }
 
         .optin-form {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: #ffffff;
+            padding: 1.75rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(21, 101, 192, 0.06), 0 0 0 1px rgba(21, 101, 192, 0.06);
         }
 
         .form-title {
-            font-size: 1.8rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #1565c0;
             text-align: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .form-group label {
@@ -143,36 +236,41 @@
             color: #2c3e50;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group select {
             width: 100%;
-            padding: 15px;
+            padding: 14px 16px;
             border: 2px solid #e8ecef;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: all 0.35s ease;
             box-sizing: border-box;
+            background: #fff;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #1565c0;
-            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
+            box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.12);
         }
 
         .btn-claim {
             width: 100%;
-            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+            background-size: 200% 200%;
             color: white;
             padding: 18px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             margin-top: 1rem;
+            box-shadow: 0 4px 20px rgba(21, 101, 192, 0.35);
         }
 
         .btn-claim::before {
@@ -182,8 +280,19 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-claim::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .btn-claim:hover::before {
@@ -191,8 +300,8 @@
         }
 
         .btn-claim:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(21, 101, 192, 0.45);
         }
 
         .btn-claim:disabled {
@@ -202,27 +311,59 @@
         }
 
         .urgency-badge {
-            background: #ffd700;
-            color: #1565c0;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffec8b 50%, #ffd700 100%);
+            background-size: 200% 200%;
+            color: #0d47a1;
+            padding: 0.65rem 1rem;
+            border-radius: 14px;
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
-            animation: pulse 2s infinite;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+            border: 1px solid rgba(255,255,255,0.6);
+            animation: badgeShine 4s ease-in-out infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        @keyframes badgeShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .optin-location-card {
+            background: rgba(255,255,255,0.15);
+            padding: 1.25rem;
+            border-radius: 14px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        .optin-location-card .optin-address {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .optin-map-wrap {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.25);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .optin-map-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 220px;
+            border: 0;
         }
 
         .testimonial {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             padding: 1.5rem;
-            border-radius: 10px;
-            margin-top: 2rem;
+            border-radius: 14px;
+            margin-top: 1.5rem;
             font-style: italic;
+            border: 1px solid rgba(255,255,255,0.25);
         }
 
         .testimonial-author {
@@ -296,7 +437,34 @@
         }
 
         .back-link:hover {
-            opacity: 0.8;
+            opacity: 0.9;
+        }
+
+        .optin-trust-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .optin-trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0.75rem 0.5rem;
+            background: #f5f7fa;
+            border-radius: 12px;
+            border: 1px solid rgba(21, 101, 192, 0.1);
+            font-size: 0.8rem;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .optin-trust-item i {
+            color: #1565c0;
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
         }
 
         @media (max-width: 768px) {
@@ -316,6 +484,14 @@
 
             .optin-subtitle {
                 font-size: 1.1rem;
+            }
+
+            .optin-location-card {
+                padding: 1rem;
+            }
+
+            .optin-map-wrap iframe {
+                height: 200px;
             }
 
             .back-link {
@@ -340,6 +516,10 @@
             .form-group div[style*="display: flex"] {
                 flex-direction: column !important;
                 gap: 0.5rem !important;
+            }
+
+            .optin-trust-strip {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -377,7 +557,7 @@
                 </div>
                 
                 <h1 class="optin-title">
-                    ¡1 SEMANA<br>
+                    ¡3 DÍAS<br>
                     COMPLETAMENTE<br>
                     <span style="color: #ffd700;">GRATIS!</span>
                 </h1>
@@ -386,10 +566,15 @@
                     Descubre por qué más de 300 personas eligen Pimpos Gym para transformar su vida
                 </p>
 
-                <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 10px; margin-bottom: 1.5rem; border-left: 4px solid #ffd700;">
-                    <i class="fas fa-map-marker-alt"></i> <strong>Ubicación:</strong><br>
-                    Carrera 20A #19-60<br>
-                    Pasto, Nariño
+                <div class="optin-location-card">
+                    <div class="optin-address">
+                        <i class="fas fa-map-marker-alt" style="color: #ffd700; margin-right: 0.35rem;"></i>
+                        <strong>Ubicación:</strong><br>
+                        Carrera 20A #19-60, Pasto, Nariño
+                    </div>
+                    <div class="optin-map-wrap">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.927167639373!2d-77.2783582239623!3d1.211002998777456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e2ed4854fe83e81%3A0x50169723a0542b2!2sPimpos%20Gym!5e0!3m2!1sen!2sco!4v1773626266727!5m2!1sen!2sco" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Pimpos Gym en Google Maps"></iframe>
+                    </div>
                 </div>
 
                 <ul class="optin-benefits">
@@ -429,11 +614,17 @@
                 </div>
 
                 <div class="optin-form">
-                    <h2 class="form-title">¡Reclama tu Semana Gratis!</h2>
+                    <h2 class="form-title">¡Reclama tus 3 Días Gratis!</h2>
+
+                    <div class="optin-trust-strip">
+                        <div class="optin-trust-item"><i class="fas fa-bolt"></i> Sin compromiso</div>
+                        <div class="optin-trust-item"><i class="fas fa-check-double"></i> Activa en minutos</div>
+                        <div class="optin-trust-item"><i class="fas fa-users"></i> +300 ya probaron</div>
+                    </div>
                     
                     <div class="alert alert-success" id="successAlert">
                         <i class="fas fa-check-circle"></i>
-                        ¡Excelente! Te hemos enviado los detalles de tu semana gratis por email.
+                        ¡Excelente! Te hemos enviado los detalles de tu cortesía a tu whats app y correo electrónico, revisa en tu bandeja de promociones.
                     </div>
 
                     <div class="alert alert-error" id="errorAlert">
@@ -477,7 +668,7 @@
 
                         <button type="submit" class="btn-claim" id="claimBtn">
                             <i class="fas fa-gift"></i>
-                            ¡QUIERO MI SEMANA GRATIS!
+                            ¡QUIERO MIS 3 DÍAS GRATIS!
                         </button>
 
                         <div class="loading" id="loading">
@@ -486,9 +677,14 @@
                         </div>
                     </form>
 
-                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
+                    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.75rem; margin-bottom: 0;">
                         Al registrarte, aceptas recibir información sobre promociones y servicios de Pimpos Gym.
                     </p>
+                </div>
+
+                <div class="optin-right-footer">
+                    <p><i class="fas fa-clock"></i> Horario: Lun - Sáb 5:00 AM - 9:20 PM</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Carrera 20A #19-60, Pasto</p>
                 </div>
             </div>
         </div>
@@ -533,8 +729,8 @@
 
                 // Add timestamp and source
                 jsonData.timestamp = new Date().toISOString();
-                jsonData.source = 'optin-semana-gratis';
-                jsonData.promocion = '1 semana gratis';
+                jsonData.source = 'optin-3-dias-gratis';
+                jsonData.promocion = '3 días gratis';
 
                 // Send to webhook
                 const response = await fetch(WEBHOOK_URL, {
