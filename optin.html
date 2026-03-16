@@ -78,6 +78,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 55%);
             animation: float 6s ease-in-out infinite;
+            pointer-events: none;
         }
 
         .optin-left::after {
@@ -97,31 +98,10 @@
         }
 
         .optin-right {
-            padding: 2rem 2.5rem;
+            padding: 3rem;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 35%, #ffffff 100%);
-            position: relative;
-        }
-
-        .optin-right::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(21, 101, 192, 0.15), transparent);
-        }
-
-        .optin-right {
-            animation: rightFadeIn 0.7s ease 0.15s both;
-        }
-
-        @keyframes rightFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            justify-content: center;
         }
 
         .optin-right-footer {
@@ -210,23 +190,22 @@
         }
 
         .optin-form {
-            background: #ffffff;
-            padding: 1.75rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(21, 101, 192, 0.06), 0 0 0 1px rgba(21, 101, 192, 0.06);
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
         .form-title {
-            font-size: 1.75rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #1565c0;
             text-align: center;
-            margin-bottom: 1rem;
-            line-height: 1.3;
+            margin-bottom: 1.5rem;
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
@@ -236,41 +215,36 @@
             color: #2c3e50;
         }
 
-        .form-group input,
-        .form-group select {
+        .form-group input {
             width: 100%;
-            padding: 14px 16px;
+            padding: 15px;
             border: 2px solid #e8ecef;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 16px;
-            transition: all 0.35s ease;
+            transition: all 0.3s ease;
             box-sizing: border-box;
-            background: #fff;
         }
 
-        .form-group input:focus,
-        .form-group select:focus {
+        .form-group input:focus {
             outline: none;
             border-color: #1565c0;
-            box-shadow: 0 0 0 4px rgba(21, 101, 192, 0.12);
+            box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.1);
         }
 
         .btn-claim {
             width: 100%;
-            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
-            background-size: 200% 200%;
+            background: linear-gradient(135deg, #1565c0 0%, #42a5f5 100%);
             color: white;
             padding: 18px;
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             margin-top: 1rem;
-            box-shadow: 0 4px 20px rgba(21, 101, 192, 0.35);
         }
 
         .btn-claim::before {
@@ -311,22 +285,13 @@
         }
 
         .urgency-badge {
-            background: linear-gradient(135deg, #ffd700 0%, #ffec8b 50%, #ffd700 100%);
-            background-size: 200% 200%;
-            color: #0d47a1;
-            padding: 0.65rem 1rem;
-            border-radius: 14px;
+            background: #ffd700;
+            color: #1565c0;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
             font-weight: 700;
             text-align: center;
             margin-bottom: 1rem;
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
-            border: 1px solid rgba(255,255,255,0.6);
-            animation: badgeShine 4s ease-in-out infinite;
-        }
-
-        @keyframes badgeShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
         }
 
         .optin-location-card {
@@ -335,6 +300,8 @@
             border-radius: 14px;
             margin-bottom: 1.5rem;
             border: 1px solid rgba(255,255,255,0.25);
+            position: relative;
+            z-index: 1;
         }
 
         .optin-location-card .optin-address {
@@ -348,6 +315,8 @@
             overflow: hidden;
             border: 1px solid rgba(255,255,255,0.25);
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 2;
         }
 
         .optin-map-wrap iframe {
@@ -355,6 +324,7 @@
             width: 100%;
             height: 220px;
             border: 0;
+            pointer-events: auto;
         }
 
         .testimonial {
@@ -443,28 +413,30 @@
         .optin-trust-strip {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
+            gap: 0.85rem;
+            margin-bottom: 1.75rem;
         }
 
         .optin-trust-item {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 0.75rem 0.5rem;
-            background: #f5f7fa;
-            border-radius: 12px;
-            border: 1px solid rgba(21, 101, 192, 0.1);
-            font-size: 0.8rem;
-            color: #374151;
-            font-weight: 500;
+            padding: 1rem 0.6rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.85rem;
+            color: #334155;
+            font-weight: 600;
+            min-height: 3.5rem;
         }
 
         .optin-trust-item i {
             color: #1565c0;
-            font-size: 1.25rem;
-            margin-bottom: 0.35rem;
+            font-size: 1.35rem;
+            margin-bottom: 0.4rem;
         }
 
         @media (max-width: 768px) {
@@ -503,19 +475,17 @@
             }
 
             /* Phone field mobile styles */
-            #codigo-pais {
+            .form-group-phone .phone-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .form-group-phone .input-codigo {
                 width: 100%;
-                font-size: 14px;
-                padding: 12px;
             }
 
             #telefono {
                 font-size: 16px !important;
-            }
-
-            .form-group div[style*="display: flex"] {
-                flex-direction: column !important;
-                gap: 0.5rem !important;
             }
 
             .optin-trust-strip {
@@ -615,12 +585,6 @@
 
                 <div class="optin-form">
                     <h2 class="form-title">¡Reclama tus 3 Días Gratis!</h2>
-
-                    <div class="optin-trust-strip">
-                        <div class="optin-trust-item"><i class="fas fa-bolt"></i> Sin compromiso</div>
-                        <div class="optin-trust-item"><i class="fas fa-check-double"></i> Activa en minutos</div>
-                        <div class="optin-trust-item"><i class="fas fa-users"></i> +300 ya probaron</div>
-                    </div>
                     
                     <div class="alert alert-success" id="successAlert">
                         <i class="fas fa-check-circle"></i>
@@ -677,14 +641,9 @@
                         </div>
                     </form>
 
-                    <p style="text-align: center; font-size: 0.85rem; color: #666; margin-top: 0.75rem; margin-bottom: 0;">
+                    <p style="text-align: center; font-size: 0.9rem; color: #666; margin-top: 1rem;">
                         Al registrarte, aceptas recibir información sobre promociones y servicios de Pimpos Gym.
                     </p>
-                </div>
-
-                <div class="optin-right-footer">
-                    <p><i class="fas fa-clock"></i> Horario: Lun - Sáb 5:00 AM - 9:20 PM</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Carrera 20A #19-60, Pasto</p>
                 </div>
             </div>
         </div>
@@ -742,7 +701,15 @@
                 });
 
                 if (response.ok) {
-                    // Success
+                    // Success - evento Meta para "Iniciar prueba"
+                    if (typeof fbq === 'function') {
+                        fbq('track', 'StartTrial', {
+                            value: 1,
+                            currency: 'COP',
+                            subscription_id: 'pase 3 dias',
+                            predicted_ltv: '250000'
+                        });
+                    }
                     successAlert.style.display = 'block';
                     form.reset();
                     
